@@ -1,0 +1,12 @@
+'Implement a Bloomfilter from scratch'
+
+class Bloom:
+    def __init__(self, pop=56, probes=6):
+        self.pop = xrange(pop)
+        self.probes = probes
+
+    def add(self, element):
+        seed(element)
+        lucky = sample(self.pop, self.probes)
+        
+        

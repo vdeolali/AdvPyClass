@@ -1,0 +1,27 @@
+Day 4: Advanced Python Class
+
+
+I) Class vs Instances
+	- Inheritance can be collapsed into a single class
+	- Instance lookup, starts with instance and works its way up in search
+	- Instead of calling a function inst_lock we switched to a operation "." (DOT). dot calls __getattrribute__
+	- import itself is a convenience
+	- for loop just looks up iter and calls next for example for x in s  is it = iter(s) and it.next(it)
+	- import looks up sys.path, execs code
+	- def creates a functiond add __doc and __name
+	- a = 10 causes globals, locals and class and instances
+	- metaclass controls __repr (what does a class look like), __call, __getattribute, __new
+	- __new and __new looks for __slots
+	- ORM object relational mapper
+
+		import orm
+		class Person(orm.Model):
+			name = String(2)
+			age = Int(3)
+
+			def __init__(self, name, age)
+				self.name = name
+				self.age = age
+
+	- ORM
+		+ Note of caution. ORMs are liked at first and then become complex quite quickly

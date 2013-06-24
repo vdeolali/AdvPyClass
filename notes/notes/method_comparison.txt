@@ -1,0 +1,18 @@
+'''
+Functions has __get__
+    So if you put them a class,   a.f   -->  a.__class__.__dict__['f'].__get__(a, A)
+    The output is a boundmethod
+    The net effect is SELF is prepended to the function call
+
+Staticmethods wrap functions.
+    The have a __get__ method
+    So if you put them a class,   a.f   -->  a.__class__.__dict__['f'].__get__(a, A)
+    The net effect is to prepend NOTHING
+
+Classmethods wrap functions.
+    The have a __get__ method
+    So if you put them a class,   a.f   -->  a.__class__.__dict__['f'].__get__(a, A)
+    The net effect is to prepend the CLASS
+
+'''    
+ 

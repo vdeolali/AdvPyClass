@@ -1,0 +1,818 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> ================================ RESTART ================================
+>>> 
+>>> 
+
+>>> Person
+<class __main__.Person at 0x1017636d0>
+>>> Person.name
+<__main__.String instance at 0x1016e04d0>
+>>> Person.name.position
+0
+>>> Person.name.size
+20
+>>> Person.age.size
+3
+>>> Person.age.__class__.__name__
+'Int'
+>>> Person.age.position
+1
+>>> ================================ RESTART ================================
+>>> 
+>>> dir(p)
+['__doc__', '__init__', '__module__', 'age', 'name']
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Setting (<__main__.Person object at 0x101761450>, 'Raymond')
+>>> ================================ RESTART ================================
+>>> 
+Setting <__main__.Person object at 0x101761490> to Raymond
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761510> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761510> to 48
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761510> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761510> to 48
+Creating SQL to set <__main__.Person object at 0x101761510> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761550> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761550> to 48
+Creating SQL to set <__main__.Person object at 0x101761550> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761550> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761550> to 48
+Creating SQL to set <__main__.Person object at 0x101761550> to 49
+>>> issubclass(String, FieldDefinition)
+True
+>>> issubclass(str, FieldDefinition)
+False
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x1017614d0> to Raymond
+Creating SQL to set <__main__.Person object at 0x1017614d0> to 48
+Creating SQL to set <__main__.Person object at 0x1017614d0> to 49
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 31, in <module>
+    class Model(object):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 26, in __new__
+    print fields_defs
+NameError: global name 'fields_defs' is not defined
+>>> ================================ RESTART ================================
+>>> 
+[]
+[('age', <__main__.Int object at 0x1017619d0>), ('name', <__main__.String object at 0x101761990>)]
+Creating SQL to set <__main__.Person object at 0x101761950> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761950> to 48
+Creating SQL to set <__main__.Person object at 0x101761950> to 49
+>>> ================================ RESTART ================================
+>>> 
+[]
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 38, in <module>
+    class Person(Model):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 26, in __new__
+    field_defs.sort(key=lambda k, v: v.position)
+TypeError: Error when calling the metaclass bases
+    <lambda>() takes exactly 2 arguments (1 given)
+>>> ================================ RESTART ================================
+>>> 
+[]
+[('name', <__main__.String object at 0x1017619d0>), ('age', <__main__.Int object at 0x101761a10>)]
+Creating SQL to set <__main__.Person object at 0x101761990> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761990> to 48
+Creating SQL to set <__main__.Person object at 0x101761990> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating a table with:
+Creating a table with:
+name String 20
+age Int 3
+Creating SQL to set <__main__.Person object at 0x1017619d0> to Raymond
+Creating SQL to set <__main__.Person object at 0x1017619d0> to 48
+Creating SQL to set <__main__.Person object at 0x1017619d0> to 49
+>>> bin(48)
+'0b110000'
+>>> 
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> def collatz(x):
+	if x % 2 == 0:
+		return x // 2
+	else:
+		return 3 * x + 1
+
+	
+>>> x = 5
+>>> collatz(5)
+16
+>>> collatz(_)
+8
+>>> collatz(_)
+4
+>>> collatz(_)
+2
+>>> collatz(_)
+1
+>>> 
+>>> from dis import dis
+>>> dis(collatz)
+  2           0 LOAD_FAST                0 (x)
+              3 LOAD_CONST               1 (2)
+              6 BINARY_MODULO       
+              7 LOAD_CONST               2 (0)
+             10 COMPARE_OP               2 (==)
+             13 POP_JUMP_IF_FALSE       24
+
+  3          16 LOAD_FAST                0 (x)
+             19 LOAD_CONST               1 (2)
+             22 BINARY_FLOOR_DIVIDE 
+             23 RETURN_VALUE        
+
+  5     >>   24 LOAD_CONST               3 (3)
+             27 LOAD_FAST                0 (x)
+             30 BINARY_MULTIPLY     
+             31 LOAD_CONST               4 (1)
+             34 BINARY_ADD          
+             35 RETURN_VALUE        
+             36 LOAD_CONST               0 (None)
+             39 RETURN_VALUE        
+>>> def collatz(x):
+	if x % 2 == 0:
+		return x // 2
+	else:
+		return 3 * x + 1
+
+	
+>>> 
+KeyboardInterrupt
+>>> 
+>>> import ctypes
+>>> cso = ctypes.cdll.LoadLibrary
+>>> cso = ctypes.cdll.LoadLibrary('collatz.o')
+
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    cso = ctypes.cdll.LoadLibrary('collatz.o')
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py", line 443, in LoadLibrary
+    return self._dlltype(name)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py", line 365, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: dlopen(collatz.o, 6): no suitable image found.  Did find:
+	collatz.o: file too short
+>>> cso = ctypes.cdll.LoadLibrary('coll.so')
+>>> cso.collatz(10)
+5
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+
+
+>>> 
+
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+
+
+>>> 
+>>> 
+>>> 
+>>> import ctypes
+>>> so = ctypes.cdll.LoadLibrary('collatz.so')
+>>> so.collatz(5)
+16
+>>> so.collatz(15)
+46
+>>> 
+so.collatz('hello')
+12158410
+>>> 
+>>> 
+>>> s = 'hello'
+>>> so.collatz(s)
+12158410
+>>> id(d)
+
+Traceback (most recent call last):
+  File "<pyshell#50>", line 1, in <module>
+    id(d)
+NameError: name 'd' is not defined
+>>> id(s)
+4319284080
+>>> id(s) & 0x7FFF
+2928
+>>> id(s) & 0x7FFFFFFF
+24316784
+>>> _ // 2
+12158392
+>>> ================================ RESTART ================================
+>>> 
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+>>> s = '''The
+quick
+brown
+fox
+'''
+>>> print s
+The
+quick
+brown
+fox
+
+>>> s = '''\
+The
+quick
+brown
+fox
+'''
+>>> print s
+The
+quick
+brown
+fox
+
+>>> ================================ RESTART ================================
+>>> 
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+>>> ================================ RESTART ================================
+>>> 
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+>>> ================================ RESTART ================================
+>>> 
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+>>> ================================ RESTART ================================
+>>> 
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+>>> ================================ RESTART ================================
+>>> 
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+>>> field_names
+['hometown', 'pop_density', 'long', 'lat']
+>>> # Goal: print dict(kind=kind, firstname=firstname, height=height)
+>>> 
+>>> # Subgoal: firstname=firstname, height=height
+>>> 
+>>> ['%s=%s' % (fname, fname) for fname in field_names]
+['hometown=hometown', 'pop_density=pop_density', 'long=long', 'lat=lat']
+>>> ''.join(['%s=%s' % (fname, fname) for fname in field_names])
+'hometown=hometownpop_density=pop_densitylong=longlat=lat'
+>>> ', '.join(['%s=%s' % (fname, fname) for fname in field_names])
+'hometown=hometown, pop_density=pop_density, long=long, lat=lat'
+>>> ================================ RESTART ================================
+>>> 
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+>>> ================================ RESTART ================================
+>>> 
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 85, in <module>
+    parse = parse_record_type(record_layout, verbose=True)
+TypeError: parse_record_type() got an unexpected keyword argument 'verbose'
+>>> ================================ RESTART ================================
+>>> 
+        elif kind == 'q':
+
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 87, in <module>
+    parse(sample_data)
+TypeError: 'NoneType' object is not callable
+>>> ================================ RESTART ================================
+>>> 
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 105, in <module>
+    parse(sample_data)
+TypeError: 'NoneType' object is not callable
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def f(x):
+	x += 10
+	print x
+	x += 100
+	print x
+	x += 1000
+	print x
+
+	
+>>> f(1)
+11
+111
+1111
+>>> def f(x):
+	x += 10
+	return x
+	x += 100
+	return x
+	x += 1000
+	return x
+
+>>> f(1)
+11
+>>> f(1)
+11
+>>> def f(x):
+	x += 10
+	yield x
+	x += 100
+	yield x
+	x += 1000
+	yield x
+
+	
+>>> g = f(1)
+>>> next(g)
+11
+>>> next(g)
+111
+>>> next(g)
+1111
+>>> next(g)
+
+Traceback (most recent call last):
+  File "<pyshell#94>", line 1, in <module>
+    next(g)
+StopIteration
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 103, in <module>
+    parse = parse_record_type(record_layout, verbose=True)
+NameError: name 'parse_record_type' is not defined
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 105, in <module>
+    parse(sample_data)
+TypeError: 'generator' object is not callable
+>>> for line in parse:
+	print line
+
+	
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 105, in <module>
+    parse(sample_data)
+TypeError: 'generator' object is not callable
+>>> 
+>>> print ''.join(parse)
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+        elif kind == 'q':
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+            rank = int(data[i:i+2])
+            i += 2
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+        elif kind == 'p':
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+            age = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, lastname=lastname, age=age)
+        elif kind == 'c':
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+            height = float(data[i:i+12])
+            i += 12
+            print dict(kind=kind, firstname=firstname, height=height)
+        elif kind == 'a':
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+            pop_density = float(data[i:i+15])
+            i += 15
+            long = float(data[i:i+8])
+            i += 8
+            lat = float(data[i:i+4])
+            i += 4
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> ================================ RESTART ================================
+>>> 
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+        elif kind == 'q':
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+            rank = int(data[i:i+2])
+            i += 2
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+        elif kind == 'p':
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+            age = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, lastname=lastname, age=age)
+        elif kind == 'c':
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+            height = float(data[i:i+12])
+            i += 12
+            print dict(kind=kind, firstname=firstname, height=height)
+        elif kind == 'a':
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+            pop_density = float(data[i:i+15])
+            i += 15
+            long = float(data[i:i+8])
+            i += 8
+            lat = float(data[i:i+4])
+            i += 4
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/codegen.py", line 108, in <module>
+    parse(sample_data)
+TypeError: 'NoneType' object is not callable
+>>> ================================ RESTART ================================
+>>> 
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+        elif kind == 'q':
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+            rank = int(data[i:i+2])
+            i += 2
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+        elif kind == 'p':
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+            age = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, lastname=lastname, age=age)
+        elif kind == 'c':
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+            height = float(data[i:i+12])
+            i += 12
+            print dict(kind=kind, firstname=firstname, height=height)
+        elif kind == 'a':
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+            pop_density = float(data[i:i+15])
+            i += 15
+            long = float(data[i:i+8])
+            i += 8
+            lat = float(data[i:i+4])
+            i += 4
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+>>> ================================ RESTART ================================
+>>> 
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+        elif kind == 'q':
+            military_id = str(data[i:i+14]).rstrip()
+            i += 14
+            blood_type = str(data[i:i+1]).rstrip()
+            i += 1
+            rank = int(data[i:i+2])
+            i += 2
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+        elif kind == 'p':
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+            age = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, lastname=lastname, age=age)
+        elif kind == 'c':
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+            height = float(data[i:i+12])
+            i += 12
+            print dict(kind=kind, firstname=firstname, height=height)
+        elif kind == 'a':
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+            pop_density = float(data[i:i+15])
+            i += 15
+            long = float(data[i:i+8])
+            i += 8
+            lat = float(data[i:i+4])
+            i += 4
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+>>> 

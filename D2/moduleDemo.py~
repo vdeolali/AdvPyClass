@@ -1,0 +1,29 @@
+'Show how import logic works'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    example = myimport ('example')    # import example
+    print example.x
+    print example.square(S)
+    

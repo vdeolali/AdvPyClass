@@ -1,0 +1,4 @@
+
+
+class A:
+    _slots_  = 'a', 'b', 'c'

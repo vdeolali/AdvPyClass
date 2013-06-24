@@ -1,0 +1,26 @@
+Day 3
+
+I) Generators
+	- keyword yield
+	- Yield makes iterators and for consumes them
+	- find the it = iter(g) and then call it using x = next(it)
+	- Import searches sys.path ; reads the file ; execs the body; wraps in module
+	- The cache is in sys.modules and reload function forces a reload
+	- def square(x):
+		'Return a numbers times itself'
+		return x*x
+II0 Def steps
+		+ make a function
+		+ assign to a variable
+		+ teach the object about its __name__ and __doc__ string
+	- lambda x: x*x
+
+III) Class
+	- exec the code in a namespace --> dict
+	- builds a classobject using the name, bases, dict
+	- makes an assigntment to the name
+	- The class keyword calls a meta class with (name, bases, dict) --> classobject
+	- By default, the metaclass is  classobject
+	- If you inherit from object(), the metaclass is called type
+	- or you can specify you own metaclass
+	

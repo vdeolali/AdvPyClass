@@ -1,0 +1,14 @@
+#include "Python.h"
+#include <stdio.h>
+
+PyObject*
+show(PyObject *self, PyObject *args){
+  const char *s;
+
+  if(!PyArg_ParseTuple(args, "s", &s))
+    return NULL;
+
+  printf("<<%s>>\n", s);
+  return Py_BuildValue("");
+  
+}

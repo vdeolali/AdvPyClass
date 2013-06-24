@@ -1,0 +1,81 @@
+I) LISTS
+Expensive memory operations in List
+	a. List pop (n), del list[n], list.insert (n, item)
+	b. O(n) complexity
+	c. Overallocation is done at 1/8 rate after first doubling
+	d. pop is the fastest operation in python
+	e. deque() is fast at both ends
+
+PreSize
+	a. [none] * n will pre-size
+	b. map() and list() presize
+
+II) SETS
+
+	a. When 2/3 full, grows by factor of 4
+	b. Smallest size is 8
+	c. Entries have 2 elements
+	d. dictionaries have more wasted space but scale well. Always (1)
+
+III) DICT
+	a. Tuples are space efficient, Dicts are not.
+	b. Dicts don't remember space
+	c. Lists are dictionaries where keys are indices
+
+
+IV) Deque
+	a. Pronouced Deck
+	b. wasted space 3X of a list
+	c. Every access is cache nuss
+	d. 62 elements of doubly linked blocks
+	e. d = deque(open(filename), maxlen = 10) # remembers last 10 lines of a file
+
+V) Tuple, NamedTuple
+
+
+VI) Mutable
+	a. list
+	b. set
+	c. dict
+	d. deque
+	e. file(w)
+
+VII) Immutable
+	a. tuple
+	b. named tuple
+	c. frozen set
+	d. file (r)
+	e. string/primitives
+	f. none
+	g. Int/float
+
+	-> File is not hashable
+
+VIII) Ordered
+	a. list
+	b. tuple
+	c. NamedTuple
+	d. deque
+	e. String
+	f. OrderedDict
+
+IX)  Unordered
+	a. dict
+	b. set
+	c. frozenset
+
+X) Native vs. Derived
+
+	Left Column: List, tuple, dict [Derived]
+	Right Colume: OrderedDict, namedTuple [Derived}
+
+Afternoon Session
+
+I) Bloom Filters
+
+II) Change the data structure to store population
+
+III) Write a spell checker
+
+IV) Use Pickle on spell checker
+

@@ -1,0 +1,18 @@
+'''
+
+* __new__ make the class
+* __init__ store the name, bases, mapping
+* __getattr__ implement the dotted lookup "the dot"
+* __call__ makes the instance
+* __repor__ controls how the class display
+
+
+instances:
+
+* object.__metaclass___ = type 
+* object.__getattr__      implements the dotted lookup 
+* object.__repr__         controls how the instances display
+
+'''
+
+

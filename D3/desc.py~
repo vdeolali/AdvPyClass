@@ -1,0 +1,20 @@
+
+
+class Desc(object):
+
+    def __get__(self,obj, objtype):
+        print 'Invoked'
+        print 'Returning x + 10'
+        return obj.x + 10
+
+
+
+
+class A(object):
+
+    def __init__(self,x):
+        self.x = x
+
+
+    plus_ten = Desc()
+    

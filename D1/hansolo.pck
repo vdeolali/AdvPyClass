@@ -1,0 +1,14 @@
+(lp0
+I10
+aI20
+a(S'hello'
+p1
+S'world'
+p2
+tp3
+a(dp4
+S'raymond'
+p5
+S'red'
+p6
+sa.

@@ -1,0 +1,3 @@
+LIBRARY cbitarray.pyd
+EXPORTS
+initcbitarray

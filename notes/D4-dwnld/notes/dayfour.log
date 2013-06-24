@@ -1,0 +1,107 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> ================================ RESTART ================================
+>>> 
+>>> 
+
+>>> Person
+<class __main__.Person at 0x1017636d0>
+>>> Person.name
+<__main__.String instance at 0x1016e04d0>
+>>> Person.name.position
+0
+>>> Person.name.size
+20
+>>> Person.age.size
+3
+>>> Person.age.__class__.__name__
+'Int'
+>>> Person.age.position
+1
+>>> ================================ RESTART ================================
+>>> 
+>>> dir(p)
+['__doc__', '__init__', '__module__', 'age', 'name']
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+Setting (<__main__.Person object at 0x101761450>, 'Raymond')
+>>> ================================ RESTART ================================
+>>> 
+Setting <__main__.Person object at 0x101761490> to Raymond
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761510> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761510> to 48
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761510> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761510> to 48
+Creating SQL to set <__main__.Person object at 0x101761510> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761550> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761550> to 48
+Creating SQL to set <__main__.Person object at 0x101761550> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x101761550> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761550> to 48
+Creating SQL to set <__main__.Person object at 0x101761550> to 49
+>>> issubclass(String, FieldDefinition)
+True
+>>> issubclass(str, FieldDefinition)
+False
+>>> ================================ RESTART ================================
+>>> 
+Creating SQL to set <__main__.Person object at 0x1017614d0> to Raymond
+Creating SQL to set <__main__.Person object at 0x1017614d0> to 48
+Creating SQL to set <__main__.Person object at 0x1017614d0> to 49
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 31, in <module>
+    class Model(object):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 26, in __new__
+    print fields_defs
+NameError: global name 'fields_defs' is not defined
+>>> ================================ RESTART ================================
+>>> 
+[]
+[('age', <__main__.Int object at 0x1017619d0>), ('name', <__main__.String object at 0x101761990>)]
+Creating SQL to set <__main__.Person object at 0x101761950> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761950> to 48
+Creating SQL to set <__main__.Person object at 0x101761950> to 49
+>>> ================================ RESTART ================================
+>>> 
+[]
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 38, in <module>
+    class Person(Model):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/how_orms_work.py", line 26, in __new__
+    field_defs.sort(key=lambda k, v: v.position)
+TypeError: Error when calling the metaclass bases
+    <lambda>() takes exactly 2 arguments (1 given)
+>>> ================================ RESTART ================================
+>>> 
+[]
+[('name', <__main__.String object at 0x1017619d0>), ('age', <__main__.Int object at 0x101761a10>)]
+Creating SQL to set <__main__.Person object at 0x101761990> to Raymond
+Creating SQL to set <__main__.Person object at 0x101761990> to 48
+Creating SQL to set <__main__.Person object at 0x101761990> to 49
+>>> ================================ RESTART ================================
+>>> 
+Creating a table with:
+Creating a table with:
+name String 20
+age Int 3
+Creating SQL to set <__main__.Person object at 0x1017619d0> to Raymond
+Creating SQL to set <__main__.Person object at 0x1017619d0> to 48
+Creating SQL to set <__main__.Person object at 0x1017619d0> to 49
+>>> bin(48)
+'0b110000'
+>>> 

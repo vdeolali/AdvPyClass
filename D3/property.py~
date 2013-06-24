@@ -1,0 +1,5 @@
+class PriceRange(object):
+    def __init__(self, lwo, high):
+        self.low = low
+        self.high = high
+        

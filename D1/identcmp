@@ -1,0 +1,11 @@
+ActivePython 2.7.2.5 (ActiveState Software Inc.) based on
+Python 2.7.2 (default, Jun 24 2011, 12:22:14) [MSC v.1500 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> class Int(int):
+	def __cmp__(self, other):
+		print "!"
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return hash(int(self))
+	

@@ -1,0 +1,1132 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> Type "copyright", "credits" or "license()" for more information.
+SyntaxError: invalid syntax
+>>> 
+>>> 
+
+>>> 
+>>> import random
+>>> for x in [10, 20, 30-:
+	  
+SyntaxError: invalid syntax
+>>> for x in [10, 20, 30]:
+	print x*x
+
+	
+100
+400
+900
+>>> 
+>>> s = [10, 20, 30]
+>>> it = iter(s)
+>>> it
+<listiterator object at 0x10044dfd0>
+>>> next(it)
+10
+>>> next(it)
+20
+>>> next(it)
+30
+>>> next(it)
+
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    next(it)
+StopIteration
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # generators -- yield
+>>> 
+>>> def f(x):
+	x += 10
+	yield x
+	x += 100
+	yield x
+	x += 1000
+	yield x
+
+	
+>>> g = f(1)
+>>> g
+<generator object f at 0x1012f82d0>
+>>> dir(g)
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close', 'gi_code', 'gi_frame', 'gi_running', 'next', 'send', 'throw']
+>>> next(g)
+11
+>>> next(g)
+111
+>>> next(g)
+1111
+>>> next(g)
+
+Traceback (most recent call last):
+  File "<pyshell#38>", line 1, in <module>
+    next(g)
+StopIteration
+>>> # YIELD makes iterators   FOR consumes iterators
+>>> 
+>>> for x in f(1):
+	print x
+
+	
+11
+111
+1111
+>>> # YIELD makes iterators   FOR consumes iterators
+>>> # it = iter(g)     x=next(it);   x=next(it)    ...   StopIteration
+>>> 
+>>> 
+>>> # IMPORT search sys.path   reads the file    execs the body   wraps in a module object
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> vars(math)['pi']
+3.141592653589793
+>>> 
+>>> # IMPORT search sys.path   reads the file    execs the body   wraps in a module object
+>>> #     the cache is sys.modules    and    reload() function forces a reload
+>>> 
+>>> 
+>>> def square(x):
+	'Return a number times itself'
+	return x*x
+
+>>> # 1 make a function
+>>> # 2 assign to a variable
+>>> # 3 teach the object about its __name__ and __doc__
+>>> 
+>>> lambda x: x*x
+<function <lambda> at 0x101765398>
+>>> (lambda x: x*x)(5)
+25
+>>> 100 + (lambda x: x*x)(5) + 50
+175
+>>> square = lambda x: x*x
+>>> 
+>>> square(5)
+25
+>>> square.__name__ = 'square'
+>>> square.__doc__ = 'Return a number times itself'
+>>> 
+>>> square(20)
+400
+>>> help(square)
+Help on function square in module __main__:
+
+square(x)
+    Return a number times itself
+
+>>> # DEF has three responsibilities
+>>> # 1 make a function
+>>> # 2 assign to a variable
+>>> # 3 teach the object about its __name__ and __doc__
+>>> 
+>>> 
+>>> 
+>>> class Dog:
+	'A simple canine class'
+
+	
+>>> Dog
+<class __main__.Dog at 0x10177e050>
+>>> type(Dog)
+<type 'classobj'>
+>>> 
+>>> Dog.__name__
+'Dog'
+>>> Dog.__bases__
+()
+>>> 
+>>> # CLASS does
+>>> # 1 exec the code in a namespace --> dictionary
+>>> # 2 builds a classobject using the name, bases, dictionary
+>>> # 3 makes an assignment to the name
+>>> 
+>>> # The class keyword calls a metaclass(name, bases, dictionary) --> classobject
+>>> # By default, the metaclass is classobject
+>>> # If you inherit from object(), the metaclass is called type()
+>>> # Or you can specify your own metaclass
+>>> 
+>>> def explore(*args):
+	print 'Called with', args
+	return 42
+
+>>> 
+>>> explore('Raymond', 'Hettinger')
+Called with ('Raymond', 'Hettinger')
+42
+>>> class Dog:
+	__metaclass__ = explore
+
+	
+Called with ('Dog', (), {'__module__': '__main__', '__metaclass__': <function explore at 0x101bb4758>})
+>>> class Dog:
+	__metaclass__ = explore
+	x = 1
+	def bark(self):
+		pass
+
+	
+Called with ('Dog', (), {'x': 1, '__module__': '__main__', '__metaclass__': <function explore at 0x101bb4758>, 'bark': <function bark at 0x101765500>})
+>>> 
+>>> from pprint import pprint
+>>> def explore(*args):
+	'Called with:'
+	pprint(args)
+	return 42
+
+>>> class Dog:
+	__metaclass__ = explore
+	x = 1
+	def bark(self):
+		pass
+
+	
+('Dog',
+ (),
+ {'__metaclass__': <function explore at 0x101bb6848>,
+  '__module__': '__main__',
+  'bark': <function bark at 0x101bb68c0>,
+  'x': 1})
+>>> # a metaclass is called with MC(name, bases, mapping)
+>>> Dog
+42
+>>> 
+>>> 
+>>> 
+>>> # What the CLASS keyword does
+>>> # execs the code and creates a dictionary:  mapping
+>>> # mc = mapping['__metaclass__']
+>>> # Dog = mc('Dog', (), mapping)
+>>> # adds '__module__' to the dictionary
+>>> 
+>>> def makedict(name, bases, mapping):
+	return mapping
+
+>>> class d:
+	__metaclass__ = makedict
+	raymond = 'red'
+	rachel = 'blue'
+	matthew = 'yellow'
+
+	
+>>> pprint(d)
+{'__metaclass__': <function makedict at 0x101bb4758>,
+ '__module__': '__main__',
+ 'matthew': 'yellow',
+ 'rachel': 'blue',
+ 'raymond': 'red'}
+>>> 
+>>> 
+>>> d
+{'matthew': 'yellow', '__module__': '__main__', 'rachel': 'blue', '__metaclass__': <function makedict at 0x101bb4758>, 'raymond': 'red'}
+>>> e = {'abc': 10}
+>>> d.update(e)
+>>> d
+{'matthew': 'yellow', '__module__': '__main__', 'abc': 10, '__metaclass__': <function makedict at 0x101bb4758>, 'raymond': 'red', 'rachel': 'blue'}
+>>> 
+>>> 
+>>> 
+>>> d = {'raymond': 'red', 'rachel': 'blue'}
+>>> e = {'rachel': 'azure', 'matthew': 'yellow'}
+>>> 
+>>> d.update(e)
+>>> d
+{'matthew': 'yellow', 'rachel': 'azure', 'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Dog
+{'_bases_': ({'_bases_': (), '__module__': '__main__', '__metaclass__': <class '__main__.Cls'>, '_name_': 'Animal', '_init_': <function _init_ at 0x101767488>, 'walk': <function walk at 0x101767500>},), '__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x101767578>, '_name_': 'Dog'}
+>>> from pprint import pprint
+>>> pprint(d)
+{'_class_': {'__doc__': 'Specialization of Animal',
+             '__module__': '__main__',
+             '_bases_': ({'__metaclass__': <class '__main__.Cls'>,
+                          '__module__': '__main__',
+                          '_bases_': (),
+                          '_init_': <function _init_ at 0x101767488>,
+                          '_name_': 'Animal',
+                          'walk': <function walk at 0x101767500>},),
+             '_name_': 'Dog',
+             'bark': <function bark at 0x101767578>},
+ 'name': 'Fido'}
+>>> d.__class__
+<class '__main__.Inst'>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Animal
+<class __main__.Animal at 0x1017634c8>
+>>> Dog
+<class __main__.Dog at 0x101763530>
+>>> d
+<__main__.Dog instance at 0x1016e0dd0>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Animal
+{'_bases_': (), '__module__': '__main__', '__metaclass__': <class '__main__.Cls'>, '_name_': 'Animal', '_init_': <function _init_ at 0x101767488>, 'walk': <function walk at 0x101767500>}
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> Dog
+<Cls: Dog>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> d
+<Inst of Dog>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def square(x):
+	return x*x
+
+>>> d.square = square
+>>> vars(d)
+{'square': <function square at 0x1004a5aa0>, 'name': 'Fido'}
+>>> d.square
+<function square at 0x1004a5aa0>
+>>> d.square(10)
+100
+>>> def explore(*args):
+	print 'Called with', args
+	return 42
+
+>>> 
+>>> Dog.explore = explore
+>>> vars(Dog)
+{'explore': <function explore at 0x101760c08>, '__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x1016111b8>}
+>>> Dog.explore(10, 20, 30)
+
+Traceback (most recent call last):
+  File "<pyshell#184>", line 1, in <module>
+    Dog.explore(10, 20, 30)
+TypeError: unbound method explore() must be called with Dog instance as first argument (got int instance instead)
+>>> d.explore(10, 20, 30)
+Called with (<__main__.Dog instance at 0x1016e0dd0>, 10, 20, 30)
+42
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> d
+<__main__.Dog instance at 0x1016e0dd0>
+>>> vars(d)
+{'name': 'Fido'}
+>>> d.__class__
+<class __main__.Dog at 0x101763600>
+>>> 
+>>> 
+>>> vars(d)['name'] = 'Ripper'
+>>> d.bark()
+Woof!
+>>> d.__class__
+<class __main__.Dog at 0x101763600>
+>>> d.__class__ = Cat
+>>> d.bark()
+Meow!
+>>> 
+>>> 
+>>> d.m(10, 20, 30)  -->  m(inst, 10, 20, 30)
+d.__class__ = Cat
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> dict(raymond='red')
+{'raymond': 'red'}
+>>> d = {}
+>>> d.update(raymond='blue')
+>>> d
+{'raymond': 'blue'}
+>>> # nothing; keywords; listoftuples; another dict
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from collections import OrderedDict
+>>> lot = [('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow')]
+>>> 
+>>> od = OrderedDict(lot)
+>>> od
+OrderedDict([('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow')])
+>>> 
+>>> od = OrderedDict(lot, tbd='pink')
+>>> od
+OrderedDict([('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow'), ('tbd', 'pink')])
+>>> 
+>>> od = OrderedDict(raymond='orange')
+>>> od.update(lot, tbd='yellow')
+>>> od
+OrderedDict([('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow'), ('tbd', 'yellow')])
+>>> 
+>>> # Normal behavior  constructor(lot, **kwds)  and od.update(lot, **kwds)
+>>> 
+>>> class A(OrderedDict):
+	def update(*args, **kwds):
+		raise RuntimeError
+
+	
+>>> od = A(lot, tbd='pink')
+>>> od
+A([('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow'), ('tbd', 'pink')])
+>>> od.update(rob='black')
+
+Traceback (most recent call last):
+  File "<pyshell#234>", line 1, in <module>
+    od.update(rob='black')
+  File "<pyshell#231>", line 3, in update
+    raise RuntimeError
+RuntimeError
+>>> class A(OrderedDict):
+	def __init__(self, *args, **kwds):
+		OrderedDict.__init__(self, *args, **kwds)
+		print 'Hey, I am initializing'
+
+		
+>>> od = A(lot, tbd='pink')
+Hey, I am initializing
+>>> od.update(rob='black')
+>>> od
+A([('raymond', 'red'), ('rachel', 'blue'), ('matthew', 'yellow'), ('tbd', 'pink'), ('rob', 'black')])
+>>> 
+>>> 
+>>> # Old-style classes search depth-first-left-to-right
+>>> 
+>>> # New-style compute the MRO (method resolution order) using C3 Linearization Algorithm
+>>> # 1. Children go before parents
+>>> # 2. Immediate base classes stay in order (the order listed)
+>>> # 3. A parent's mro is respected by the children
+>>> 
+>>> class A(object): pass
+
+>>> class B(A): pass
+
+>>> class C(A): pass
+
+>>> class D(B, C): pass
+
+>>> D.__mro__
+(<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <type 'object'>)
+>>> __name__
+'__main__'
+>>> 
+>>> b = B()
+>>> isinstance(b, B)
+True
+>>> isinstance(b, A)
+True
+>>> class ZeroDict(dict):
+	def __missing__(self, key):
+		return 0
+
+	
+>>> d = ZeroDict()
+>>> d['red']
+0
+>>> d['red'] += 1
+>>> d
+{'red': 1}
+>>> 
+>>> 
+>>> from collections import Counter
+>>> 
+>>> issubclass(Counter, dict)
+True
+>>> d = Counter()
+>>> d['red']
+0
+>>> # A counter is a dict with a missing that returns zero
+>>> 
+>>> from collections import OrderedDict
+>>> d = OrderedDict()
+>>> d['raymond'] = 'red'
+>>> d['rachel'] = 'blue'
+>>> d.items()
+[('raymond', 'red'), ('rachel', 'blue')]
+>>> d['red']
+
+Traceback (most recent call last):
+  File "<pyshell#287>", line 1, in <module>
+    d['red']
+KeyError: 'red'
+>>> 
+>>> class OrderedCounter(Counter, OrderedDict): pass
+
+>>> Ordered
+
+Traceback (most recent call last):
+  File "<pyshell#291>", line 1, in <module>
+    Ordered
+NameError: name 'Ordered' is not defined
+>>> OrderedCounter.__mro__
+(<class '__main__.OrderedCounter'>, <class 'collections.Counter'>, <class 'collections.OrderedDict'>, <type 'dict'>, <type 'object'>)
+>>> oc = OrderedCounter()
+>>> oc['red']
+0
+>>> oc['raymond'] = 'red'
+>>> oc['rachel'] = 'blue'
+>>> oc.items()
+[('raymond', 'red'), ('rachel', 'blue')]
+>>> oc['matthew']
+0
+>>> class OrderedCounter(Counter, OrderedDict): pass
+
+>>> 
+>>> # Cooperative Multiple Inheritance
+>>> 
+>>> # class FlyingCar(Car, Airplane): pass
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+class OrderedCounter(OrderedDict, Counter): pass
+
+>>> OrderedCounter.__mro__
+(<class '__main__.OrderedCounter'>, <class 'collections.OrderedDict'>, <class 'collections.Counter'>, <type 'dict'>, <type 'object'>)
+>>> Counter('abracadar')
+Counter({'a': 4, 'r': 2, 'b': 1, 'c': 1, 'd': 1})
+>>> OrderCounter('abracadaba')
+
+Traceback (most recent call last):
+  File "<pyshell#313>", line 1, in <module>
+    OrderCounter('abracadaba')
+NameError: name 'OrderCounter' is not defined
+>>> OrderedCounter('abracadaba')
+
+Traceback (most recent call last):
+  File "<pyshell#314>", line 1, in <module>
+    OrderedCounter('abracadaba')
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py", line 52, in __init__
+    self.__update(*args, **kwds)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py", line 547, in update
+    for key, value in other:
+ValueError: need more than 1 value to unpack
+>>> class OrderedCounter(Counter, OrderedDict): pass
+
+>>> OrderedCounter('abracadaba')
+OrderedCounter({'a': 5, 'b': 2, 'r': 1, 'c': 1, 'd': 1})
+>>> 
+>>> 
+>>> class OrderedCounter(Counter, OrderedDict): pass
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def bark(self):
+	print 'Woof'
+
+	
+>>> Dog = type('Dog', (object,), {'bark': bark})
+>>> Dog
+<class '__main__.Dog'>
+>>> type(Dog)
+<type 'type'>
+>>> 
+>>> 
+>>> Dog = type('Dog', (object,), {'bark': bark})
+>>> d = Dog()
+>>> b.bark()
+
+Traceback (most recent call last):
+  File "<pyshell#336>", line 1, in <module>
+    b.bark()
+AttributeError: 'B' object has no attribute 'bark'
+>>> d.bark()
+Woof
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> def bark(self):
+	print 'Woof'
+
+	
+>>> Dog = Cls('Dog', (Object,), {'bark': bark})
+>>> Dog
+<Cls: Dog>
+>>> d = Dog('Fido')
+>>> d.bark()
+Woof
+>>> 
+>>> 
+>>> Dog = type('Dog', (object,), {'bark': bark})
+>>> Dog
+<class '__main__.Dog'>
+>>> d = Dog('Fido')
+
+Traceback (most recent call last):
+  File "<pyshell#349>", line 1, in <module>
+    d = Dog('Fido')
+TypeError: object() takes no parameters
+>>> d = Dog()
+>>> d.bark()
+Woof
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle
+<class '__main__.Circle'>
+>>> ================================ RESTART ================================
+>>> 
+>>> type(Circle)
+<type 'type'>
+>>> dir(type)
+['__abstractmethods__', '__base__', '__bases__', '__basicsize__', '__call__', '__class__', '__delattr__', '__dict__', '__dictoffset__', '__doc__', '__eq__', '__flags__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__instancecheck__', '__itemsize__', '__le__', '__lt__', '__module__', '__mro__', '__name__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasscheck__', '__subclasses__', '__subclasshook__', '__weakrefoffset__', 'mro']
+>>> Circle(10)
+<__main__.Circle object at 0x10044dfd0>
+>>> c = Circle(10)
+>>> Circle.area
+<unbound method Circle.area>
+>>> Circle.__metaclass__
+<type 'type'>
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+'A roundish thing'
+>>> 
+>>> 
+>>> 
+>>> type.__repr__(Circle)
+"<class '__main__.Circle'>"
+>>> type.__call__(Circle, 10)
+<__main__.Circle object at 0x101761950>
+>>> type.__getattribute__(Circle, '__doc__')
+'A roundish thing'
+>>> 
+>>> Circle
+<class '__main__.Circle'>
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle(10)
+<__main__.Circle object at 0x10044dfd0>
+>>> Circle
+<class '__main__.Circle'>
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle
+<! Circle !>
+>>> Circle(10)
+<__main__.Circle object at 0x101761450>
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle
+<! Circle !>
+>>> Circle(10)
+Instance of Circle
+>>> ================================ RESTART ================================
+>>> 
+>>> inst_list
+[Instance of Circle, Instance of Circle]
+>>> ================================ RESTART ================================
+>>> 
+>>> inst_list
+[<__main__.Circle object at 0x101761910>]
+>>> 
+>>> c
+<__main__.Circle object at 0x101761910>
+>>> d
+<__main__.Circle object at 0x101761910>
+>>> ================================ RESTART ================================
+>>> 
+>>> c.count
+2
+>>> Circle(30)
+<__main__.Circle object at 0x101761910>
+>>> c.count
+3
+>>> Circle.__doc__
+'A roundish thing'
+>>> import time
+>>> time.ctime()
+'Wed Jun 19 15:09:23 2013'
+>>> time.ctime()
+'Wed Jun 19 15:09:27 2013'
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+'A roundish thing'
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+Looking up: __doc__
+'A roundish thing'
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+'A roundish thing'
+>>> Circle.time
+'Wed Jun 19 15:13:01 2013'
+>>> Circle.time
+'Wed Jun 19 15:13:02 2013'
+>>> Circle.time
+'Wed Jun 19 15:13:04 2013'
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.__doc__
+'A roundish thing'
+>>> Circle.time
+'Wed Jun 19 15:14:57 2013'
+>>> Circle.roll
+0
+>>> Circle.roll
+1
+>>> ================================ RESTART ================================
+>>> 
+New: (<class '__main__.NewMeta'>, 'Circle', (), {'__module__': '__main__', '__metaclass__': <class '__main__.NewMeta'>, '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101765398>, 'area': <function area at 0x101765410>})
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/metaclass_demo.py", line 143, in <module>
+    class Circle:
+  File "/Users/raymondhettinger/dropbox/Public/sj49/metaclass_demo.py", line 141, in __new__
+    return type.__new__(args)
+TypeError: Error when calling the metaclass bases
+    type.__new__(X): X is not a type object (tuple)
+>>> ================================ RESTART ================================
+>>> 
+New: (<class '__main__.NewMeta'>, 'Circle', (), {'__module__': '__main__', '__metaclass__': <class '__main__.NewMeta'>, '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101765398>, 'area': <function area at 0x101765410>})
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> c.area()
+314.0
+>>> e.area()
+100.0
+>>> Circle.__name__
+'ShapeCircle'
+>>> Square.__name__
+'ShapeSquare'
+>>> ================================ RESTART ================================
+>>> 
+>>> Circle.welcome()
+
+Traceback (most recent call last):
+  File "<pyshell#401>", line 1, in <module>
+    Circle.welcome()
+TypeError: unbound method welcome() must be called with ShapeCircle instance as first argument (got nothing instead)
+>>> c.welcome()
+Howdy!
+>>> vars(Circle)
+dict_proxy({'__module__': '__main__', '__metaclass__': <class '__main__.NewMeta'>, 'area': <function area at 0x101766488>, '__dict__': <attribute '__dict__' of 'ShapeCircle' objects>, 'welcome': <function welcome at 0x1004a5f50>, '__weakref__': <attribute '__weakref__' of 'ShapeCircle' objects>, '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101766410>})
+>>> ================================ RESTART ================================
+>>> 
+>>> vars(Circle)
+dict_proxy({'__module__': '__main__', '__metaclass__': <class '__main__.NewMeta'>, 'weight': 0, 'area': <function area at 0x101766488>, 'color': 0, 'welcome': <function welcome at 0x1004a5f50>, 'width': 0, '__dict__': <attribute '__dict__' of 'ShapeCircle' objects>, 'attributes': ('width', 'color', 'weight'), '__weakref__': <attribute '__weakref__' of 'ShapeCircle' objects>, '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101766410>})
+>>> ================================ RESTART ================================
+>>> 
+>>> vars(Circle)
+dict_proxy({'__module__': '__main__', 'weight': 0, 'area': <function area at 0x101766488>, 'color': 0, 'welcome': <function welcome at 0x1004a5f50>, 'width': 0, 'attributes': ('width', 'color', 'weight'), '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101766410>})
+>>> vars(Circle)['color'] = 10
+
+Traceback (most recent call last):
+  File "<pyshell#406>", line 1, in <module>
+    vars(Circle)['color'] = 10
+TypeError: 'dictproxy' object does not support item assignment
+>>> Circle.color = 10
+>>> vars(Circle)
+dict_proxy({'__module__': '__main__', 'weight': 0, 'area': <function area at 0x101766488>, 'color': 10, 'welcome': <function welcome at 0x1004a5f50>, 'width': 0, 'attributes': ('width', 'color', 'weight'), '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101766410>})
+>>> dict(vars(Circle))
+{'__module__': '__main__', 'weight': 0, 'area': <function area at 0x101766488>, 'color': 10, 'welcome': <function welcome at 0x1004a5f50>, 'width': 0, 'attributes': ('width', 'color', 'weight'), '__doc__': 'A roundish thing', '__init__': <function __init__ at 0x101766410>}
+>>> print 'hello'
+hello
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10
+>>> p.high
+19
+>>> p.midpoint
+14.5
+>>> vars(p)
+{'high': 19, 'midpoint': 14.5, 'low': 10}
+>>> 
+>>> p.low = 12
+>>> p.high
+19
+>>> p.midpoint
+14.5
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10
+>>> p.high
+19
+>>> p.midpoint()
+14.5
+>>> 
+>>> p.low = 12
+>>> p.midpoint()
+15.5
+>>> vars(p)
+{'high': 19, 'low': 12}
+>>> p.low
+12
+>>> p.high
+19
+>>> p.midpoint
+<bound method PriceRange.midpoint of <__main__.PriceRange object at 0x101761390>>
+>>> ================================ RESTART ================================
+>>> 
+>>> p.low
+10
+>>> p.high
+19
+>>> p.midpoint
+14.5
+>>> 
+>>> p.low = 12
+>>> p.midpoint
+15.5
+>>> vars(p)
+{'high': 19, 'low': 12}
+>>> p.midpoint
+15.5
+>>> def f(*args):
+	print 'Called with', args
+	return 42
+
+>>> class A:
+	pass
+
+>>> a = A()
+>>> 
+>>> a.f = f
+>>> 
+>>> vars(a)
+{'f': <function f at 0x1004a5aa0>}
+>>> a.f(10, 20)
+Called with (10, 20)
+42
+>>> a.f
+<function f at 0x1004a5aa0>
+>>> 
+>>> 
+>>> b = A()
+>>> A.f = f
+>>> vars(A)
+{'__module__': '__main__', '__doc__': None, 'f': <function f at 0x1004a5aa0>}
+>>> A.__dict__['f']
+<function f at 0x1004a5aa0>
+>>> A.__dict__['f'](10, 20, 30)
+Called with (10, 20, 30)
+42
+>>> 
+>>> b.f
+<bound method A.f of <__main__.A instance at 0x1016dfe18>>
+>>> b.f(10, 20, 30)
+Called with (<__main__.A instance at 0x1016dfe18>, 10, 20, 30)
+42
+>>> f(10, 20, 30)        # f.__call__(10, 20, 30)
+Called with (10, 20, 30)
+42
+>>> b.f                  # b.__class__.__dict__['f'].__fget__(b, A)
+<bound method A.f of <__main__.A instance at 0x1016dfe18>>
+>>> b.__class__.__dict__['f'].__fget__(b, A)
+
+Traceback (most recent call last):
+  File "<pyshell#464>", line 1, in <module>
+    b.__class__.__dict__['f'].__fget__(b, A)
+AttributeError: 'function' object has no attribute '__fget__'
+>>> dir(f)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> b.__class__.__dict__['f'].__get__(b, A)
+<bound method A.f of <__main__.A instance at 0x1016dfe18>>
+>>> 
+>>> 
+>>> 
+>>> b.f
+<bound method A.f of <__main__.A instance at 0x1016dfe18>>
+>>> b.__class__.__dict__['f'].__get__(b, A)
+<bound method A.f of <__main__.A instance at 0x1016dfe18>>
+>>> 
+>>> 
+>>> # __get__(self, obj, objtype)
+>>> b.__class__.__dict__['f'].__get__(b, type(b))
+<bound method instance.f of <__main__.A instance at 0x1016dfe18>>
+>>> class A:
+	def bark(self, x):
+		print 'Barking with', x
+
+		
+>>> a = A()
+>>> 
+>>> vars(A)
+{'__module__': '__main__', 'bark': <function bark at 0x101766488>, '__doc__': None}
+>>> vars(A)['bark']
+<function bark at 0x101766488>
+>>> dir(_)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> class A:
+	def bark(self, x):
+		print 'Barking with', x
+
+		
+>>> a = A()
+>>> a.bark(10)
+Barking with 10
+>>> 
+>>> 
+>>> a.bark(10)               # 1) dot    2) parens
+Barking with 10
+>>> 
+>>> a.bark
+<bound method A.bark of <__main__.A instance at 0x1016df098>>
+>>> bm = a.bark
+>>> dir(bm)
+['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__format__', '__func__', '__get__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'im_class', 'im_func', 'im_self']
+>>> bm()
+
+Traceback (most recent call last):
+  File "<pyshell#495>", line 1, in <module>
+    bm()
+TypeError: bark() takes exactly 2 arguments (1 given)
+>>> bm(20)
+Barking with 20
+>>> 
+>>> 
+>>> a.bark(10)               # 1) dot    2) parens
+Barking with 10
+>>> 
+>>> bm = a.bark
+>>> bm(10)
+Barking with 10
+>>> 
+>>> 
+>>> 
+>>> 30 + 40
+70
+>>> _ * 10
+700
+>>> _ * 10
+7000
+>>> dir(_)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> class BoundMethod:
+	def __init__(self, func, inst):
+		self.func = func
+		self.inst = inst
+	def __call__(self, *args):
+		return self.func(self.inst, *args)
+
+	
+>>> class A:
+	def bark(self, x):
+		print 'Barking with', x
+
+		
+>>> func = vars(A)['bark']
+>>> func
+<function bark at 0x1017665f0>
+>>> inst = A()
+>>> inst
+<__main__.A instance at 0x1016ece18>
+>>> bm = BoundMethod(func, inst)
+>>> bm.func
+<function bark at 0x1017665f0>
+>>> bm.inst
+<__main__.A instance at 0x1016ece18>
+>>> bm(10)      #  --> bark(inst, 10)
+Barking with 10
+>>> 
+>>> a = A()
+>>> func = vars(A)['bark']
+>>> dir(func)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> func.__get__(inst, type(inst))
+<bound method instance.bark of <__main__.A instance at 0x1016ece18>>
+>>> bm = func.__get__(inst, type(inst))
+>>> dir(bm)
+['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__format__', '__func__', '__get__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'im_class', 'im_func', 'im_self']
+>>> bm.im_func
+<function bark at 0x1017665f0>
+>>> bm.im_self
+<__main__.A instance at 0x1016ece18>
+>>> bm.im_class
+<type 'instance'>
+>>> bm(10)
+Barking with 10
+>>> 
+>>> 
+>>> def f(*args):
+	print 'Called with', args
+	return 42
+
+>>> sm = staticmethod(f)
+>>> dir(sm)
+['__class__', '__delattr__', '__doc__', '__format__', '__func__', '__get__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> sm.__get__(a, A)
+<function f at 0x101766500>
+>>> sm.__get__(a, A)(10, 20, 30)
+Called with (10, 20, 30)
+42
+>>> cm = classmethod(f)
+>>> dir(cm)
+['__class__', '__delattr__', '__doc__', '__format__', '__func__', '__get__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> cm.__get__(a, A)
+<bound method classobj.f of <class __main__.A at 0x101763ae0>>
+>>> cm.__get__(a, A)(10, 20, 30)
+Called with (<class __main__.A at 0x101763ae0>, 10, 20, 30)
+42
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/slots.py", line 23, in <module>
+    class A:
+  File "/Users/raymondhettinger/dropbox/Public/sj49/slots.py", line 15, in __new__
+    mapping[_slotvalues] = [0] * len(slots)
+NameError: global name '_slotvalues' is not defined
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/slots.py", line 23, in <module>
+    class A:
+  File "/Users/raymondhettinger/dropbox/Public/sj49/slots.py", line 15, in __new__
+    mapping[_slotvalues] = [0] * len(slots)
+NameError: global name '_slotvalues' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> vars(A)
+dict_proxy({'__module__': '__main__', '__metaclass__': <class '__main__.SlotMeta'>, '_slotvalues': [0, 0, 0], '_slots_': ('a', 'b', 'c'), '__dict__': <attribute '__dict__' of 'A' objects>, '__weakref__': <attribute '__weakref__' of 'A' objects>, '__doc__': None})
+>>> ================================ RESTART ================================
+>>> 
+>>> vars(A)
+dict_proxy({'a': <__main__.Member object at 0x1017613d0>, '__module__': '__main__', 'b': <__main__.Member object at 0x101761410>, '__metaclass__': <class '__main__.SlotMeta'>, '_slots_': ('a', 'b', 'c'), '__dict__': <attribute '__dict__' of 'A' objects>, '__weakref__': <attribute '__weakref__' of 'A' objects>, 'c': <__main__.Member object at 0x101761450>, '_slotvalues': [0, 0, 0], '__doc__': None})
+>>> ================================ RESTART ================================
+>>> 
+>>> pprint(dict(A))
+
+Traceback (most recent call last):
+  File "<pyshell#558>", line 1, in <module>
+    pprint(dict(A))
+TypeError: 'SlotMeta' object is not iterable
+>>> pprint(dict(vars(A)))
+{'__dict__': <attribute '__dict__' of 'A' objects>,
+ '__doc__': None,
+ '__metaclass__': <class '__main__.SlotMeta'>,
+ '__module__': '__main__',
+ '__weakref__': <attribute '__weakref__' of 'A' objects>,
+ '_slots_': ('a', 'b', 'c'),
+ '_slotvalues': [0, 0, 0],
+ 'a': <__main__.Member object at 0x101761690>,
+ 'b': <__main__.Member object at 0x1017616d0>,
+ 'c': <__main__.Member object at 0x101761710>}
+>>> ================================ RESTART ================================
+>>> 
+>>> dir(p)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__metaclass__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_slots_', '_slotvalues', 'a', 'b', 'c']
+>>> 
+>>> p.a
+0
+>>> p.a = 10
+>>> p.b = 20
+>>> p.c = 30
+>>> vars(p)
+{}
+>>> p.a
+10
+>>> p.b
+20
+>>> p.c
+30
+>>> ================================ RESTART ================================
+>>> 
+>>> pprint(dict(vars(B)))
+{'__doc__': None,
+ '__module__': '__main__',
+ '__slots__': ('a', 'b', 'c'),
+ 'a': <member 'a' of 'B' objects>,
+ 'b': <member 'b' of 'B' objects>,
+ 'c': <member 'c' of 'B' objects>}
+>>> m = vars(B)['a']
+>>> m
+<member 'a' of 'B' objects>
+>>> dir(m)
+['__class__', '__delattr__', '__delete__', '__doc__', '__format__', '__get__', '__getattribute__', '__hash__', '__init__', '__name__', '__new__', '__objclass__', '__reduce__', '__reduce_ex__', '__repr__', '__set__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> vars(B)['a'].__get__(a, B)
+
+Traceback (most recent call last):
+  File "<pyshell#574>", line 1, in <module>
+    vars(B)['a'].__get__(a, B)
+NameError: name 'a' is not defined
+>>> ================================ RESTART ================================
+>>> 
+>>> vars(B)['a'].__get__(r, B)
+
+Traceback (most recent call last):
+  File "<pyshell#575>", line 1, in <module>
+    vars(B)['a'].__get__(r, B)
+AttributeError: a
+>>> vars(B)['a']
+<member 'a' of 'B' objects>
+>>> vars(B)['a'].__get__(r, B)
+
+Traceback (most recent call last):
+  File "<pyshell#577>", line 1, in <module>
+    vars(B)['a'].__get__(r, B)
+AttributeError: a
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 

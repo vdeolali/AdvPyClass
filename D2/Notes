@@ -1,0 +1,56 @@
+
+'Develop advanced skills with dictionaries'
+
+I) Literal notation
+   - set {1,2,3}
+   - dict {1:2, 3:4, 5:6}
+
+II) d = {'raymond':'red', 'rachel':'blue'}
+
+    d = dict([('raymond', 'red'), ('rachel', 'blue')])
+
+    d = dict(raymond='red', rachel='blue')
+
+
+III) dict.fromkeys(seq)
+
+names = 'raymond rachel matthew'.split()
+
+d = dict.fromkeys(names, '')
+
+IV)
+
+d[k]  d.__getitem__(k)  --> d.__missing__(k)
+d[k]=v    d.__setitem__(kv,)
+del d[k]    d.__delitem__(k)
+
+d.x    d._getattribute__('x')  -->   d.__getattr__('x')
+d.x = y   d.__setattr__('x', y)
+
+del d.x    d.__delattr__('x')
+
+d[k] --> KeyError
+d.x --> AttributeError
+
+
+
+Heaps
+
+smallest element always on top
+parents are always less than or equal to their childre
+stored as a list representing a binary tree
+heapify(fs)     O(n)
+heappush(s, v)  O(log n)
+heappop(s,v)    O(log n)
+
+
+Primary use case for heaps: Priority Queue
+
+Select is everywhere and usually poorly implement
+poll() epoll() an dkqueue()
+
+
+
+
+
+

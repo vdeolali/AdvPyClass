@@ -1,0 +1,14 @@
+from pprint import pprint
+
+
+
+def explore(*args):
+    'called with:'
+    pprint (args)
+    return 42
+
+class dog:
+    __metaclass__ = expore
+    x = 1
+    def bark(self):
+        pass

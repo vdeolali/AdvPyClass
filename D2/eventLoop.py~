@@ -1,0 +1,12 @@
+''' Demonstrate event loop basiscs
+    and gain insight into popular tools like twisted, tornado, diesel, sched, ....
+
+    Show off call backs and patterns of using them. 
+
+    Heaps - find the next scheduled event
+    
+'''
+
+from collections import namedtuple
+
+

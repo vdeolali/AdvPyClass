@@ -1,0 +1,78 @@
+Day 3
+
+I) Generators
+	- keyword yield
+	- Yield makes iterators and for consumes them
+	- find the it = iter(g) and then call it using x = next(it)
+	- Import searches sys.path ; reads the file ; execs the body; wraps in module
+	- The cache is in sys.modules and reload function forces a reload
+	- def square(x):
+		'Return a numbers times itself'
+		return x*x
+II0 Def steps
+		+ make a function
+		+ assign to a variable
+		+ teach the object about its __name__ and __doc__ string
+	- lambda x: x*x
+
+III) Class
+	- exec the code in a namespace --> dict
+	- builds a classobject using the name, bases, dict
+	- makes an assigntment to the name
+	- The class keyword calls a meta class with (name, bases, dict) --> classobject
+	- By default, the metaclass is  classobject
+	- If you inherit from object(), the metaclass is called type
+	- or you can specify you own metaclass
+
+
+IV) How we got here in meta classes
+
+	Regular: Real One as done in python
+	dict:   show the underlying dicts
+	add function: make_class, make_install
+	operator version Dog(fiood)
+
+V) Writing Subclasses - Presentation
+
+    Key Points:
+      - Isolate API assumptions  MutableSet._from_iterable
+      - Protect Internal calls. OrderedDict.__update
+      - Use Super when delegating work to another class
+      - Pick specific methods designed to be overriden: do_GET()
+      - Make a class extendable with dynamic dispatch: cmd.py
+      - Provide hooks, overrides, or controllable delegation for every piece
+        of functionality tha a subclasser may want to change.
+      - Liskov substitution principle
+      - You're in control
+      - Think strictly in terms of maximum code reuse
+      - Overwrite every method that needs to change (do not rely on implicit undocumented relationship)
+
+
+
+    MRO "Method Resolution Order"
+
+	Old style classes search depth first left to right
+	New style compute the MRO using C3 linearization Algorithm
+	- Children go befor parents
+	- Immediate base classes stay in order (the order listed)
+	- A parent's mro is respected by the children
+	- It is public that a class is subclassed from some other class
+
+   Dependency Injection
+	- Cooperative multiple inheritance
+	- class FlyingCar(Car, Airplane): pass
+
+
+VI) 2 to 3
+	- don't do it until 3.7. slower and no django
+
+
+VII) Descriptor
+
+	- Defines __get__, __set__, __delete__; Not all of them need to be implemented. Any one
+          implementation will make it is descriptor
+
+IX) Functions
+
+	staticmethod, classmethod, boundmethod differ in the first argument passed to the method
+

@@ -1,0 +1,2365 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> {2, 4, 6, 8}
+set([8, 2, 4, 6])
+>>> {2:4, 6:8}
+{2: 4, 6: 8}
+>>> 
+
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'rachel': 'blue', 'raymond': 'red'}
+>>> def mypow(base, exp):
+	return baes ** exp
+
+>>> mypow(2, 5) # positional args
+
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    mypow(2, 5) # positional args
+  File "<pyshell#6>", line 2, in mypow
+    return baes ** exp
+NameError: global name 'baes' is not defined
+>>> def mypow(base, exp):
+	return base ** exp
+
+>>> 
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+>>> 
+
+
+>>> 
+>>> def mypow(base, exp):
+	return base ** exp
+
+>>> mypow(2, 5) # positional args
+32
+>>> mypow(exp=5, base=2)  # keyword args
+32
+>>> mypow(2, exp=5)       # mixed positional and keyword -- positional goes first
+32
+>>> 
+>>> dict(45=10)
+SyntaxError: keyword can't be an expression
+>>> dict(raymond=10)
+{'raymond': 10}
+>>> dict(49ers=10)
+SyntaxError: invalid token
+>>> 
+>>> 
+>>> a10 = 100
+>>> 10a = 100
+SyntaxError: invalid syntax
+>>> # [A-Za-z_][A-Za-z_0-9]*           Regex thats describes identifiers
+>>> import keyword
+>>> keyword.kwlist
+['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+>>> ap = 10
+>>> aq = 11
+>>> 
+>>> 
+>>> 
+>>> 
+>>> None = 10
+SyntaxError: cannot assign to None
+>>> True = 0
+>>> False = 1
+>>> 
+>>> 
+>>> x = None
+>>> s = [10, 20, None, 30]
+>>> 
+>>> s = [10, 20, None, 30, True, False]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> False, True = 0, 1
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'matthew': '', 'rachel': '', 'raymond': ''}
+>>> dict.fromkeys('abcde', 0)
+{'a': 0, 'c': 0, 'b': 0, 'e': 0, 'd': 0}
+>>> dict.fromkeys(range(10), 0)
+{0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+>>> ================================ RESTART ================================
+>>> 
+>>> d
+{'matthew': '<unspecified>', 'rachel': '<unspecified>', 'raymond': '<unspecified>'}
+>>> d
+{'matthew': '<unspecified>', 'rachel': '<unspecified>', 'raymond': '<unspecified>'}
+>>> d['roger']
+
+Traceback (most recent call last):
+  File "<pyshell#62>", line 1, in <module>
+    d['roger']
+KeyError: 'roger'
+>>> d.__getitem__('raymond')
+'<unspecified>'
+>>> d['raymond']
+'<unspecified>'
+>>> ================================ RESTART ================================
+>>> 
+>>> ad['raymond'] = 'red'
+>>> ad['raymond']
+'red'
+>>> ad['roger']
+Argh!  I am really angry that roger is missing
+
+Traceback (most recent call last):
+  File "<pyshell#67>", line 1, in <module>
+    ad['roger']
+  File "/Users/raymondhettinger/dropbox/Public/sj49/dict_demo.py", line 27, in __missing__
+    raise KeyError(key)
+KeyError: 'roger'
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> zd['raymond'] = 'red'
+>>> zd
+{'raymond': 'red'}
+>>> zd['roger']
+0
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/dict_demo.py", line 39, in <module>
+    zd[color] += 1
+KeyError: 'red'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+>>> d = ListDict()
+>>> d['raymond'] = 'red'
+
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    d['raymond'] = 'red'
+AttributeError: ListDict instance has no attribute '__setitem__'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+>>> d = ListDict()
+>>> d['raymond'] = 'red'
+>>> d
+{'raymond': 'red'}
+>>> d['roger']
+[]
+>>> 
+>>> d
+{'roger': [], 'raymond': 'red'}
+>>> d['roger'].append(10)
+>>> d['roger'].append(20)
+>>> d
+{'roger': [10, 20], 'raymond': 'red'}
+>>> 
+>>> 
+>>> 
+>>> d = ListDict()
+>>> d['roger']
+[]
+>>> d['roger']
+[]
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: [3], 4: [4], 5: [5, 5, 5, 5, 5]}
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+>>> 
+>>> 
+>>> 'abracadabra'.count('a')
+5
+>>> [10, 20, 10, 30].count(10)
+2
+>>> (10, 20, 10, 30).count(10)
+2
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+>>> 
+>>> 
+>>> 'The answer is %s today but was %s yesterday' % (10, 15)
+'The answer is 10 today but was 15 yesterday'
+>>> 'The answer is %(new)s today but was %(old)s yesterday' % dict(new=10, old=15)
+'The answer is 10 today but was 15 yesterday'
+>>> 'The answer is %(new)s today but was %(old)s yesterday' % dict(new=10)
+
+Traceback (most recent call last):
+  File "<pyshell#98>", line 1, in <module>
+    'The answer is %(new)s today but was %(old)s yesterday' % dict(new=10)
+KeyError: 'old'
+>>> key = 'old'
+>>> '%(' + key + ')'
+'%(old)'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+>>> 
+>>> d['name']
+'Rachel'
+>>> d['age']
+'%(age)'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title) Rachel!
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+Good morning Mrs. Rachel!
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/dict_demo.py", line 92, in <module>
+    print 'Good morning %(title)s %(name)s!' % d % dict(tite='Mrs.')
+KeyError: 'title'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+Good morning %(title)s Rachel!
+>>> # string interpolation
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/dict_demo.py", line 92, in <module>
+    print 'Good morning %(title)s %(name)s!' % d % dict(tite='Mrs.')
+KeyError: 'title'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+Good morning Mrs. Rachel!
+>>> 
+>>> 
+>>> cd
+{'foreground': 'grey'}
+>>> cd['foreground']
+'grey'
+>>> cd['background']
+'cyan'
+>>> ================================ RESTART ================================
+>>> 
+{'blue': 1, 'green': 2, 'red': 3}
+{3: ['sam'], 4: ['mary'], 5: ['brian', 'linda', 'julie', 'jenny', 'betty']}
+{'s': ['sam'], 'b': ['brian', 'betty'], 'm': ['mary'], 'l': ['linda'], 'j': ['julie', 'jenny']}
+{'y': ['mary', 'jenny', 'betty'], 'a': ['linda'], 'm': ['sam'], 'e': ['julie'], 'n': ['brian']}
+{1: ['sam'], 2: ['mary', 'brian', 'linda', 'jenny', 'betty'], 3: ['julie']}
+Good morning %(title)s Rachel!
+Good morning Mrs. Rachel!
+grey
+cyan
+>>> >>> cd['foreground']
+'grey'
+>>> cd['background']
+SyntaxError: invalid syntax
+>>> 
+>>> ================================ RESTART ================================
+>>> x = 10
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'x']
+>>> globals()['x']
+10
+>>> globals()['x'] = 11
+>>> x
+11
+>>> del globals()['x']
+>>> 
+>>> x
+
+Traceback (most recent call last):
+  File "<pyshell#119>", line 1, in <module>
+    x
+NameError: name 'x' is not defined
+>>> 
+>>> 
+>>> #  d[k]            d.__getitem__(k)   --> d.__missing__(k)
+>>> #  d[k]=v          d.__setitem__(k, v)
+>>> #  del d[k]        d.__delitem__(k)
+>>> 
+>>> #  d.x             d.__getattribute__('x')   --> d.__getattr__('x')
+>>> #  d.x = y         d.__setattr__('x', y)
+>>> #  del d.x         d.__delattr__('x')
+>>> 
+>>> # d[k] --> KeyError
+>>> # d.x  --> AttributeError
+>>> 
+>>> #  d.x             d.__getattribute__('x')   --> d.__getattr__('x')     <-- getattr(d, 'x')
+>>> 
+>>> 
+>>> 
+>>> 
+>>> class A:
+	pass
+
+>>> a = A()
+>>> 
+>>> a.x = 10
+>>> a.__setattr__('y', 11)
+
+Traceback (most recent call last):
+  File "<pyshell#144>", line 1, in <module>
+    a.__setattr__('y', 11)
+AttributeError: A instance has no attribute '__setattr__'
+>>> dir(a)
+['__doc__', '__module__', 'x']
+>>> class A(object):
+	pass
+
+>>> a = A()
+>>> a.__setattr__('y', 11)
+>>> 
+>>> 
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> class A(object):
+	pass
+
+>>> a = A()
+>>> 
+>>> a.x = 10
+>>> a.__setattr__('y', 11)
+>>> 
+>>> a.x
+10
+>>> a.__getattribute__('y')
+11
+>>> 
+>>> 
+>>> dir(a)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'x', 'y']
+>>> vars(a)
+{'y': 11, 'x': 10}
+>>> 
+>>> 
+>>> #    d[k]           d.k
+>>> 
+>>> a.z
+
+Traceback (most recent call last):
+  File "<pyshell#174>", line 1, in <module>
+    a.z
+AttributeError: 'A' object has no attribute 'z'
+>>> 
+>>> 
+>>> class A(object):
+	pass
+
+>>> a.x = 10
+>>> a.__setattr__('y', 11)
+>>> 
+>>> v = 'z'
+>>> setattr(a, v)
+
+Traceback (most recent call last):
+  File "<pyshell#183>", line 1, in <module>
+    setattr(a, v)
+TypeError: setattr expected 3 arguments, got 2
+>>> setattr(a, v, 12)
+>>> a.z
+12
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> exec 'x = 10'
+>>> x
+10
+>>> 
+>>> y = 25
+>>> exec 'x = 10 + y'
+>>> x
+35
+>>> 
+>>> 
+>>> d = {'y': 2500}
+>>> exec 'x = 10 + y' in d
+>>> d
+{'y': 2500, '__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}, 'x': 2510}
+>>> del d['__builtins__']
+>>> 
+>>> 
+>>> d
+{'y': 2500, 'x': 2510}
+>>> exec 'x = 10 + y' in d
+>>> 
+>>> 
+>>> 
+>>> d = {'y': 25000}
+>>> exec 'x = 10 + y' in d
+>>> d['x']
+25010
+>>> d['y']
+25000
+>>> y
+25
+>>> x
+35
+>>> 
+>>> 
+>>> 
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> vars()
+{'d': <__main__.Dog instance at 0x1016e0098>, '__builtins__': <module '__builtin__' (built-in)>, 'Dog': <class __main__.Dog at 0x101763530>, '__package__': None, 'Animal': <class __main__.Animal at 0x1017634c8>, '__name__': '__main__', '__doc__': None}
+>>> 
+>>> vars(Animal)
+{'__module__': '__main__', '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x1004a5f50>, 'walk': <function walk at 0x1004a5b18>}
+>>> vars(Dogs)
+
+Traceback (most recent call last):
+  File "<pyshell#3>", line 1, in <module>
+    vars(Dogs)
+NameError: name 'Dogs' is not defined
+>>> vars(Dog)
+{'__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x1016111b8>}
+>>> 
+>>> vars(d)
+{'name': 'Fido'}
+>>> d.__class__
+<class __main__.Dog at 0x101763530>
+>>> Dog.__bases__
+(<class __main__.Animal at 0x1017634c8>,)
+>>> Animal.__bases__
+()
+>>> dir()
+['Animal', 'Dog', '__builtins__', '__doc__', '__name__', '__package__', 'd']
+>>> ================================ RESTART ================================
+>>> 
+Start of init: {}
+End of init: {'name': 'Fido'}
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> vars(d)
+{'name': 'Fido'}
+>>> vars(d.__class__)
+{'__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x1016111b8>}
+>>> vars(d.__class__)['bark']
+<function bark at 0x1016111b8>
+>>> vars(d.__class__)['bark'](d)
+Woof!
+>>> 
+>>> 
+>>> vars(d)
+{'name': 'Fido'}
+>>> vars(d.__class__)
+{'__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x1016111b8>}
+>>> d.__class__.__bases__
+(<class __main__.Animal at 0x1017634c8>,)
+>>> d.__class__.__bases__[0]
+<class __main__.Animal at 0x1017634c8>
+>>> vars(d.__class__.__bases__[0])['walk']
+<function walk at 0x1004a5b18>
+>>> vars(d.__class__.__bases__[0])['walk'](d)
+Fido is walking
+>>> ================================ RESTART ================================
+>>> 
+>>> d = {}
+>>> __init__(d, 'Fido')
+>>> d
+{'name': 'Fido'}
+>>> ================================ RESTART ================================
+>>> 
+>>> d = {}
+>>> __init__(d, 'Fido')
+>>> d
+{'name': 'Fido'}
+>>> d['name']
+'Fido'
+>>> walk(d)
+Fido is walking
+>>> print 'The answer is %(new)s today but was %(old)s yesterday' % dict(new=10, old=15)
+The answer is 10 today but was 15 yesterday
+>>> print 'The answer is {new} today but was {old} yesterday'.format(new=10, old=15)
+The answer is 10 today but was 15 yesterday
+>>> print 'The answer is {0} today but was {1} yesterday'.format(10, 15)
+The answer is 10 today but was 15 yesterday
+>>> 
+>>> names = 'Raymond Rachel Matthew'.split()
+>>> sorted(named)
+
+Traceback (most recent call last):
+  File "<pyshell#38>", line 1, in <module>
+    sorted(named)
+NameError: name 'named' is not defined
+>>> sorted(names)
+['Matthew', 'Rachel', 'Raymond']
+>>> sorted(names, key=len)
+['Rachel', 'Raymond', 'Matthew']
+>>> 
+>>> def logging_sorted(seq, key):
+	print 'Sorting:', seq
+	print 'with:', key
+	result sorted(seq, key=key)
+	
+SyntaxError: invalid syntax
+>>> def logging_sorted(seq, key):
+	print 'Sorting:', seq
+	print 'with:', key
+	result sorted(seq, key=key)
+	
+SyntaxError: invalid syntax
+>>> def logging_sorted(seq, key):
+	print 'Sorting:', seq
+	print 'with:', key
+	result = sorted(seq, key=key)
+	print result
+
+	
+>>> logging_sorted(names, key=len)
+Sorting: ['Raymond', 'Rachel', 'Matthew']
+with: <built-in function len>
+['Rachel', 'Raymond', 'Matthew']
+>>> 
+>>> 
+>>> science = 10
+>>> math = 20
+>>> reading = 30
+>>> 
+>>> import math as m
+>>> m.sqrt(science)
+3.1622776601683795
+>>> m.sqrt(math)
+4.47213595499958
+>>> 
+>>> 
+>>> from datetime import datetime
+>>> 
+>>> d = datetime.now()
+>>> d
+datetime.datetime(2013, 6, 18, 11, 44, 34, 784957)
+>>> 
+>>> print 'Today is {0}'.format(d)
+Today is 2013-06-18 11:44:34.784957
+>>> print 'Today is {0:%Y}'.format(d)
+Today is 2013
+>>> print 'Today is {0:%m}'.format(d)
+Today is 06
+>>> print 'Today is {0:%M:::%s}'.format(d)
+Today is 44:::1371581074
+>>> print 'Today is {0:%D}'.format(d)
+Today is 06/18/13
+>>> print 'Today is {0:%W}'.format(d)
+Today is 24
+>>> print 'Today is {0:%A}'.format(d)
+Today is Tuesday
+>>> ================================ RESTART ================================
+>>> 
+Fido
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+None
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> cls_lookup(Animal, '__name__')
+'Animal'
+>>> cls_lookup(Animal, '__doc_')
+
+Traceback (most recent call last):
+  File "<pyshell#75>", line 1, in <module>
+    cls_lookup(Animal, '__doc_')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 6, in cls_lookup
+    raise AttributeError(attr)
+AttributeError: __doc_
+>>> cls_lookup(Animal, '__doc__')
+'Demonstration of a simple Animal class'
+>>> cls_lookup(Animal, 'xyz')
+
+Traceback (most recent call last):
+  File "<pyshell#77>", line 1, in <module>
+    cls_lookup(Animal, 'xyz')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 6, in cls_lookup
+    raise AttributeError(attr)
+AttributeError: xyz
+>>> cls_lookup(Dog, '__doc__')
+'Specialization of Animal'
+>>> cls_lookup(Dog, 'walk')
+
+Traceback (most recent call last):
+  File "<pyshell#79>", line 1, in <module>
+    cls_lookup(Dog, 'walk')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 6, in cls_lookup
+    raise AttributeError(attr)
+AttributeError: walk
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> cls_lookup(Dog, 'walk')
+<function walk at 0x1004a5b18>
+>>> cls_lookup(Dog, 'bark')
+<function bark at 0x1016111b8>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> inst_lookup(d, 'name')
+'Fido'
+>>> inst_lookup(d, 'color')
+
+Traceback (most recent call last):
+  File "<pyshell#83>", line 1, in <module>
+    inst_lookup(d, 'color')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 16, in inst_lookup
+    return inst[attr]
+KeyError: 'color'
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> inst_lookup(d, 'color')
+
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    inst_lookup(d, 'color')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 21, in inst_lookup
+    return cls_lookup(cls, attr)
+  File "/Users/raymondhettinger/dropbox/Public/sj49/function_class.py", line 13, in cls_lookup
+    raise AttributeError(attr)
+AttributeError: color
+>>> inst_lookup(d, 'name')
+'Fido'
+>>> inst_lookup(d, 'bark')
+<function bark at 0x101760c08>
+>>> inst_lookup(d, '__name__')
+'Dog'
+>>> 
+>>> 
+>>> len
+<built-in function len>
+>>> callable(len)
+True
+>>> 10(30)
+
+Traceback (most recent call last):
+  File "<pyshell#92>", line 1, in <module>
+    10(30)
+TypeError: 'int' object is not callable
+>>> callable(10)
+False
+>>> 
+>>> 
+>>> 
+>>> 
+>>> pow(2, 5)
+32
+>>> 
+>>> 
+>>> from functools import partial
+>>> 
+>>> twopow = partial(pow, 2)
+>>> twopow(5)
+32
+>>> def f(x, y, z):
+	return x+y+z
+
+>>> g = partial(f, 10, 5)
+>>> g(100)
+115
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> inst_lookup(d, 'name')
+'Fido'
+>>> inst_lookup(d, '__doc__')
+'Specialization of Animal'
+>>> 'Specialization'(10)
+
+Traceback (most recent call last):
+  File "<pyshell#114>", line 1, in <module>
+    'Specialization'(10)
+TypeError: 'str' object is not callable
+>>> callable('hello')
+False
+>>> inst_lookup(d, 'bark')
+<functools.partial object at 0x101769470>
+>>> inst_lookup(d, 'bark')()
+Woof!
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> inst = {}
+>>> inst['__class__'] = Dog
+>>> Dog
+{'__name__': 'Dog', 'bark': <function bark at 0x101760c80>, '__bases__': ({'__name__': 'Animal', '__bases__': (), '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x1016111b8>, 'walk': <function walk at 0x101760c08>},), '__doc__': 'Specialization of Animal'}
+>>> 
+>>> 
+>>> inst_lookup(inst, 'walk')
+<functools.partial object at 0x101757c00>
+>>> inst_lookup(inst, '__init__')
+<functools.partial object at 0x101757d60>
+>>> from pprint import pprint
+>>> print(Animal)
+{'__name__': 'Animal', '__bases__': (), '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x1016111b8>, 'walk': <function walk at 0x101760c08>}
+>>> pprint(Animal)
+{'__bases__': (),
+ '__doc__': 'Demonstration of a simple Animal class',
+ '__init__': <function __init__ at 0x1016111b8>,
+ '__name__': 'Animal',
+ 'walk': <function walk at 0x101760c08>}
+>>> pprint(Dog)
+{'__bases__': ({'__bases__': (),
+                '__doc__': 'Demonstration of a simple Animal class',
+                '__init__': <function __init__ at 0x1016111b8>,
+                '__name__': 'Animal',
+                'walk': <function walk at 0x101760c08>},),
+ '__doc__': 'Specialization of Animal',
+ '__name__': 'Dog',
+ 'bark': <function bark at 0x101760c80>}
+>>> pprint(d)
+{'__class__': {'__bases__': ({'__bases__': (),
+                              '__doc__': 'Demonstration of a simple Animal class',
+                              '__init__': <function __init__ at 0x1016111b8>,
+                              '__name__': 'Animal',
+                              'walk': <function walk at 0x101760c08>},),
+               '__doc__': 'Specialization of Animal',
+               '__name__': 'Dog',
+               'bark': <function bark at 0x101760c80>},
+ 'name': 'Fido'}
+>>> 
+>>> 
+>>> 
+>>> import animal
+>>> vars(animal)
+{'__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}, '__file__': '/Users/raymondhettinger/dropbox/Public/sj49/animal.py', '__package__': None, '__name__': 'animal', 'walk': <function walk at 0x10176a668>, '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x10176a5f0>}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import animal
+>>> d = vars(animal)
+>>> del d['__builtins__']
+>>> pprint(d)
+{'__doc__': 'Demonstration of a simple Animal class',
+ '__file__': '/Users/raymondhettinger/dropbox/Public/sj49/animal.py',
+ '__init__': <function __init__ at 0x10176a5f0>,
+ '__name__': 'animal',
+ '__package__': None,
+ 'walk': <function walk at 0x10176a668>}
+>>> 
+>>> 
+>>> s = '''
+'Demonstration of a simple Animal class'
+
+def __init__(self, name):
+    self.name = name
+    
+def walk(self):
+    print '{0} is walking'.format(self.name)
+'''
+>>> d = {}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> d = {}
+>>> d = {'x': 100}
+>>> exec 'y = x + 1' in d
+>>> d['x']
+100
+>>> d['y']
+101
+>>> d
+{'__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}, 'x': 100, 'y': 101}
+>>> d.keys()
+['__builtins__', 'x', 'y']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> x = 100
+>>> 
+>>> d = {}
+>>> exec 'y = x + 1' in globals(), d
+>>> d
+{'y': 101}
+>>> s = '''
+'Demonstration of a simple Animal class'
+
+def __init__(self, name):
+    self.name = name
+
+def walk(self):
+    print '{0} is walking'.format(self.name)
+'''
+>>> 
+>>> d = {}
+>>> exec s in globals(), d
+>>> d
+{'__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x10176a6e0>, 'walk': <function walk at 0x10176aaa0>}
+>>> pprint(d)
+{'__doc__': 'Demonstration of a simple Animal class',
+ '__init__': <function __init__ at 0x10176a6e0>,
+ 'walk': <function walk at 0x10176aaa0>}
+>>> exec s in globals(), d  # This will hide builtins making it easier to explain if you just give it up.
+>>> 
+>>> 
+>>> g = {'x': 100, 'y': 200}
+>>> l = {'x': 150}
+>>> exec 'z = x + 1' in g, l
+>>> g
+{'y': 200, 'x': 100, '__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}}
+>>> del g['__builtins__']
+>>> g
+{'y': 200, 'x': 100}
+>>> l
+{'x': 150, 'z': 151}
+>>> exec 'z = x + 1' in g, l
+>>> 
+>>> 
+>>> g = {'x': 100, 'y': 200}
+>>> l = {'x': 150}
+>>> 
+>>> exec 'z = y + 1' in g, l
+>>> l
+{'x': 150, 'z': 201}
+>>> 
+>>> 
+>>> g = {'x': 100, 'y': 200}
+>>> l = {'x': 150}
+>>> exec 'z = y + x' in g, l
+>>> l
+{'x': 150, 'z': 350}
+>>> 
+>>> 
+>>> 
+>>> s = '''
+    'Demonstration of a simple Animal class'
+
+    def __init__(self, name):
+        self.name = name
+        
+    def walk(self):
+        print '{0} is walking'.format(self.name)
+'''
+>>> 
+>>> d = {}
+>>> exec s in globals(), d
+
+Traceback (most recent call last):
+  File "<pyshell#213>", line 1, in <module>
+    exec s in globals(), d
+  File "<string>", line 2
+    'Demonstration of a simple Animal class'
+   ^
+IndentationError: unexpected indent
+>>> 
+>>> from textwrap import dedent
+>>> print s
+
+    'Demonstration of a simple Animal class'
+
+    def __init__(self, name):
+        self.name = name
+        
+    def walk(self):
+        print '{0} is walking'.format(self.name)
+
+>>> print dedent(s)
+
+'Demonstration of a simple Animal class'
+
+def __init__(self, name):
+    self.name = name
+
+def walk(self):
+    print '{0} is walking'.format(self.name)
+
+>>> 
+>>> 
+>>> 
+>>> print s
+
+    'Demonstration of a simple Animal class'
+
+    def __init__(self, name):
+        self.name = name
+        
+    def walk(self):
+        print '{0} is walking'.format(self.name)
+
+>>> 
+>>> d = {}
+>>> exec dedent(s) in globals(), d
+>>> pprint(d)
+{'__doc__': 'Demonstration of a simple Animal class',
+ '__init__': <function __init__ at 0x101773938>,
+ 'walk': <function walk at 0x1017739b0>}
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Dog.bark(d)
+Woof!
+>>> d.bark()
+Woof!
+>>> 
+>>> exec 'print "hello"
+SyntaxError: EOL while scanning string literal
+>>> exec 'print "hello"'
+hello
+>>> 
+>>> 
+>>> class A:
+	'first string'
+	x = 10
+	def welcome():
+		print 'howdy!'
+	print x
+	for i in range(10):
+		print i*i
+
+		
+10
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+>>> vars(A)
+{'i': 9, 'x': 10, '__module__': '__main__', 'welcome': <function welcome at 0x101760c08>, '__doc__': 'first string'}
+>>> vars(A)['i']
+9
+>>> vars(A)['x']
+10
+>>> vars(A)['welcome']
+<function welcome at 0x101760c08>
+>>> vars(A)['welcome']()
+howdy!
+>>> a = A()
+>>> a.__class__
+<class __main__.A at 0x101763328>
+>>> vars(a)
+{}
+>>> def f(x):
+	y = x + 1
+	return x, y
+
+>>> x = 100
+>>> f(10)
+(10, 11)
+>>> x
+100
+>>> def f(x):
+	y = x + 1
+	print locals()
+	return x, y
+
+>>> f(10)
+{'y': 11, 'x': 10}
+(10, 11)
+>>> vars(f)
+{}
+>>> dir(f)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> f.__class__
+<type 'function'>
+>>> 
+>>> 
+>>> # closures -- def in a def
+>>> # namespace of function objects  vs. locals()
+>>> 
+>>> 
+>>> # psyco
+>>> # psuedo   meta   abstract   virtual
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+>>> 
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+>>> 
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+>>> 
+
+
+
+
+
+
+>>> 
+
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> import example
+hello
+100
+>>> example.x
+10
+>>> example.square(50)
+2500
+>>> 
+>>> vars(example)
+{'square': <function square at 0x1004a5f50>, '__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}, '__file__': '/Users/raymondhettinger/dropbox/Public/sj49/example.py', '__package__': None, 'x': 10, '__name__': 'example', '__doc__': 'A simple module demonstration'}
+>>> vars(example)['x']
+10
+>>> vars(example)['square']
+<function square at 0x1004a5f50>
+>>> vars(example)['__doc__']
+'A simple module demonstration'
+>>> 
+
+>>> 
+>>> modname = 'example'
+>>> filename = modname + '.py'
+>>> with open(filename) as f:
+	body = f.read()
+
+	
+>>> print body
+'A simple module demonstration'
+
+x = 10
+
+def square(x):
+    return x*x
+
+print 'hello'
+
+print square(x)
+
+>>> d = {}
+>>> exec body in globals(), d
+hello
+100
+>>> d
+{'x': 10, 'square': <function square at 0x1004a5b18>, '__doc__': 'A simple module demonstration'}
+>>> d.x
+
+Traceback (most recent call last):
+  File "<pyshell#305>", line 1, in <module>
+    d.x
+AttributeError: 'dict' object has no attribute 'x'
+>>> d['x']
+10
+>>> class AttrDict(object):
+	def __init__(self, d):
+		self.d = d
+	def __getattr__(self, attr):
+		return self.d[attr]
+
+	
+>>> example = AttrDict(d)
+>>> example.d
+{'x': 10, 'square': <function square at 0x1004a5b18>, '__doc__': 'A simple module demonstration'}
+>>> example.x
+10
+>>> example.abc
+
+Traceback (most recent call last):
+  File "<pyshell#316>", line 1, in <module>
+    example.abc
+  File "<pyshell#312>", line 5, in __getattr__
+    return self.d[attr]
+KeyError: 'abc'
+>>> class AttrDict(object):
+	def __init__(self, d):
+		self.d = d
+	def __getattr__(self, attr):
+		return self.d[attr]
+
+	
+>>> 
+>>> vars(AttrDict)
+dict_proxy({'__module__': '__main__', '__getattr__': <function __getattr__ at 0x101765938>, '__dict__': <attribute '__dict__' of 'AttrDict' objects>, '__weakref__': <attribute '__weakref__' of 'AttrDict' objects>, '__doc__': None, '__init__': <function __init__ at 0x1017658c0>})
+>>> from pprint import pprint
+>>> pprint(dict(vars(AttrDict)))
+{'__dict__': <attribute '__dict__' of 'AttrDict' objects>,
+ '__doc__': None,
+ '__getattr__': <function __getattr__ at 0x101765938>,
+ '__init__': <function __init__ at 0x1017658c0>,
+ '__module__': '__main__',
+ '__weakref__': <attribute '__weakref__' of 'AttrDict' objects>}
+>>> 
+>>> 
+>>> pprint(vars(example))
+{'d': {'__doc__': 'A simple module demonstration',
+       'square': <function square at 0x1004a5b18>,
+       'x': 10}}
+>>> import example
+>>> example.__name__
+'example'
+>>> example.__file__
+'/Users/raymondhettinger/dropbox/Public/sj49/example.py'
+>>> example.x
+10
+>>> example.square
+<function square at 0x1004a5f50>
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> example
+<__main__.Module object at 0x101761950>
+>>> example.__name__
+'example'
+>>> example.__file__
+'example.py'
+>>> example.x
+10
+>>> example.square(5)
+25
+>>> from pprint import pprint
+>>> 
+>>> example
+<__main__.Module object at 0x101761950>
+>>> pprint(example.mapping)
+{'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>,
+                  'AssertionError': <type 'exceptions.AssertionError'>,
+                  'AttributeError': <type 'exceptions.AttributeError'>,
+                  'BaseException': <type 'exceptions.BaseException'>,
+                  'BufferError': <type 'exceptions.BufferError'>,
+                  'BytesWarning': <type 'exceptions.BytesWarning'>,
+                  'DeprecationWarning': <type 'exceptions.DeprecationWarning'>,
+                  'EOFError': <type 'exceptions.EOFError'>,
+                  'Ellipsis': Ellipsis,
+                  'EnvironmentError': <type 'exceptions.EnvironmentError'>,
+                  'Exception': <type 'exceptions.Exception'>,
+                  'False': False,
+                  'FloatingPointError': <type 'exceptions.FloatingPointError'>,
+                  'FutureWarning': <type 'exceptions.FutureWarning'>,
+                  'GeneratorExit': <type 'exceptions.GeneratorExit'>,
+                  'IOError': <type 'exceptions.IOError'>,
+                  'ImportError': <type 'exceptions.ImportError'>,
+                  'ImportWarning': <type 'exceptions.ImportWarning'>,
+                  'IndentationError': <type 'exceptions.IndentationError'>,
+                  'IndexError': <type 'exceptions.IndexError'>,
+                  'KeyError': <type 'exceptions.KeyError'>,
+                  'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>,
+                  'LookupError': <type 'exceptions.LookupError'>,
+                  'MemoryError': <type 'exceptions.MemoryError'>,
+                  'NameError': <type 'exceptions.NameError'>,
+                  'None': None,
+                  'NotImplemented': NotImplemented,
+                  'NotImplementedError': <type 'exceptions.NotImplementedError'>,
+                  'OSError': <type 'exceptions.OSError'>,
+                  'OverflowError': <type 'exceptions.OverflowError'>,
+                  'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>,
+                  'ReferenceError': <type 'exceptions.ReferenceError'>,
+                  'RuntimeError': <type 'exceptions.RuntimeError'>,
+                  'RuntimeWarning': <type 'exceptions.RuntimeWarning'>,
+                  'StandardError': <type 'exceptions.StandardError'>,
+                  'StopIteration': <type 'exceptions.StopIteration'>,
+                  'SyntaxError': <type 'exceptions.SyntaxError'>,
+                  'SyntaxWarning': <type 'exceptions.SyntaxWarning'>,
+                  'SystemError': <type 'exceptions.SystemError'>,
+                  'SystemExit': <type 'exceptions.SystemExit'>,
+                  'TabError': <type 'exceptions.TabError'>,
+                  'True': True,
+                  'TypeError': <type 'exceptions.TypeError'>,
+                  'UnboundLocalError': <type 'exceptions.UnboundLocalError'>,
+                  'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>,
+                  'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>,
+                  'UnicodeError': <type 'exceptions.UnicodeError'>,
+                  'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>,
+                  'UnicodeWarning': <type 'exceptions.UnicodeWarning'>,
+                  'UserWarning': <type 'exceptions.UserWarning'>,
+                  'ValueError': <type 'exceptions.ValueError'>,
+                  'Warning': <type 'exceptions.Warning'>,
+                  'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>,
+                  '_': <__main__.Module object at 0x101761950>,
+                  '__debug__': True,
+                  '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.",
+                  '__import__': <built-in function __import__>,
+                  '__name__': '__builtin__',
+                  '__package__': None,
+                  'abs': <built-in function abs>,
+                  'all': <built-in function all>,
+                  'any': <built-in function any>,
+                  'apply': <built-in function apply>,
+                  'basestring': <type 'basestring'>,
+                  'bin': <built-in function bin>,
+                  'bool': <type 'bool'>,
+                  'buffer': <type 'buffer'>,
+                  'bytearray': <type 'bytearray'>,
+                  'bytes': <type 'str'>,
+                  'callable': <built-in function callable>,
+                  'chr': <built-in function chr>,
+                  'classmethod': <type 'classmethod'>,
+                  'cmp': <built-in function cmp>,
+                  'coerce': <built-in function coerce>,
+                  'compile': <built-in function compile>,
+                  'complex': <type 'complex'>,
+                  'copyright': Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved.,
+                  'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information.,
+                  'delattr': <built-in function delattr>,
+                  'dict': <type 'dict'>,
+                  'dir': <built-in function dir>,
+                  'divmod': <built-in function divmod>,
+                  'enumerate': <type 'enumerate'>,
+                  'eval': <built-in function eval>,
+                  'execfile': <built-in function execfile>,
+                  'exit': Use exit() or Ctrl-D (i.e. EOF) to exit,
+                  'file': <type 'file'>,
+                  'filter': <built-in function filter>,
+                  'float': <type 'float'>,
+                  'format': <built-in function format>,
+                  'frozenset': <type 'frozenset'>,
+                  'getattr': <built-in function getattr>,
+                  'globals': <built-in function globals>,
+                  'hasattr': <built-in function hasattr>,
+                  'hash': <built-in function hash>,
+                  'help': Type help() for interactive help, or help(object) for help about object.,
+                  'hex': <built-in function hex>,
+                  'id': <built-in function id>,
+                  'input': <built-in function input>,
+                  'int': <type 'int'>,
+                  'intern': <built-in function intern>,
+                  'isinstance': <built-in function isinstance>,
+                  'issubclass': <built-in function issubclass>,
+                  'iter': <built-in function iter>,
+                  'len': <built-in function len>,
+                  'license': Type license() to see the full license text,
+                  'list': <type 'list'>,
+                  'locals': <built-in function locals>,
+                  'long': <type 'long'>,
+                  'map': <built-in function map>,
+                  'max': <built-in function max>,
+                  'memoryview': <type 'memoryview'>,
+                  'min': <built-in function min>,
+                  'next': <built-in function next>,
+                  'object': <type 'object'>,
+                  'oct': <built-in function oct>,
+                  'open': <built-in function open>,
+                  'ord': <built-in function ord>,
+                  'pow': <built-in function pow>,
+                  'print': <built-in function print>,
+                  'property': <type 'property'>,
+                  'quit': Use quit() or Ctrl-D (i.e. EOF) to exit,
+                  'range': <built-in function range>,
+                  'raw_input': <built-in function raw_input>,
+                  'reduce': <built-in function reduce>,
+                  'reload': <built-in function reload>,
+                  'repr': <built-in function repr>,
+                  'reversed': <type 'reversed'>,
+                  'round': <built-in function round>,
+                  'set': <type 'set'>,
+                  'setattr': <built-in function setattr>,
+                  'slice': <type 'slice'>,
+                  'sorted': <built-in function sorted>,
+                  'staticmethod': <type 'staticmethod'>,
+                  'str': <type 'str'>,
+                  'sum': <built-in function sum>,
+                  'super': <type 'super'>,
+                  'tuple': <type 'tuple'>,
+                  'type': <type 'type'>,
+                  'unichr': <built-in function unichr>,
+                  'unicode': <type 'unicode'>,
+                  'vars': <built-in function vars>,
+                  'xrange': <type 'xrange'>,
+                  'zip': <built-in function zip>},
+ '__doc__': 'A simple module demonstration',
+ '__file__': 'example.py',
+ '__name__': 'example',
+ 'square': <function square at 0x1016111b8>,
+ 'x': 10}
+>>> import sys
+>>> sys.path
+['/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7', '/Users/raymondhettinger/dropbox/Public/sj49', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/docutils-0.8.1-py2.7.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/dexml-0.4.2-py2.7.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/virtualenv-1.7.1.2-py2.7.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/simplejson-2.4.0-py2.7-macosx-10.6-intel.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/Werkzeug-0.8.3-py2.7.egg', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/readline-6.2.2-py2.7-macosx-10.7-intel.egg', '/Library/Python/2.7/site-packages/distribute-0.6.34-py2.7.egg', '/usr/local/lib/python', '/Users/raymondhettinger/dropbox/Public/sj49', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload', '/Users/raymondhettinger/Library/Python/2.7/lib/python/site-packages', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages', '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL', '/Library/Python/2.7/site-packages', '/Library/Python/2.7/site-packages/setuptools-0.6c11-py2.7.egg-info']
+>>> pprint(sys.path)
+['/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7',
+ '/Users/raymondhettinger/dropbox/Public/sj49',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/docutils-0.8.1-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/dexml-0.4.2-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/virtualenv-1.7.1.2-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/simplejson-2.4.0-py2.7-macosx-10.6-intel.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/Werkzeug-0.8.3-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/readline-6.2.2-py2.7-macosx-10.7-intel.egg',
+ '/Library/Python/2.7/site-packages/distribute-0.6.34-py2.7.egg',
+ '/usr/local/lib/python',
+ '/Users/raymondhettinger/dropbox/Public/sj49',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python27.zip',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload',
+ '/Users/raymondhettinger/Library/Python/2.7/lib/python/site-packages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL',
+ '/Library/Python/2.7/site-packages',
+ '/Library/Python/2.7/site-packages/setuptools-0.6c11-py2.7.egg-info']
+>>> open('xyz.py')
+
+Traceback (most recent call last):
+  File "<pyshell#343>", line 1, in <module>
+    open('xyz.py')
+IOError: [Errno 2] No such file or directory: 'xyz.py'
+>>> path = '/Library/Python/2.7/site-packages'
+>>> filename = 'xyz.py'
+>>> path + '/' + filename
+'/Library/Python/2.7/site-packages/xyz.py'
+>>> import os
+>>> os.path.join(path, filename)
+'/Library/Python/2.7/site-packages/xyz.py'
+>>> os.path.join(path, 'notes', filename)
+'/Library/Python/2.7/site-packages/notes/xyz.py'
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> random = myimport('random')
+>>> random.randrange(30)
+28
+>>> random.__file__
+'random.py'
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> random = myimport('random')
+>>> random.__file__
+'/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py'
+>>> random = myimport('randomx')
+
+Traceback (most recent call last):
+  File "<pyshell#355>", line 1, in <module>
+    random = myimport('randomx')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/module_demo.py", line 29, in myimport
+    raise ImportError(modname)
+ImportError: randomx
+>>> import randomx
+
+Traceback (most recent call last):
+  File "<pyshell#356>", line 1, in <module>
+    import randomx
+ImportError: No module named randomx
+>>> 
+>>> 
+>>> import urllib
+>>> globals()['urllib']
+<module 'urllib' from '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.pyc'>
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> myimport('random')
+>>> random.randrange(10)
+4
+>>> ================================ RESTART ================================
+>>> 
+>>> 
+>>> import example
+hello
+100
+>>> import example
+>>> 
+>>> 
+>>> import sys
+>>> sys.modules['example']
+<module 'example' from 'example.py'>
+>>> 
+>>> del sys.modules['example']
+>>> import example
+hello
+100
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> module_cache
+{'example': <__main__.Module object at 0x101761990>}
+>>> myimport('example')
+<__main__.Module object at 0x101761990>
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> myimport('example')
+>>> example.x
+10
+>>> 
+>>> 
+>>> import example
+hello
+100
+>>> example
+<module 'example' from '/Users/raymondhettinger/dropbox/Public/sj49/example.py'>
+>>> del example
+>>> import example
+>>> example
+<module 'example' from '/Users/raymondhettinger/dropbox/Public/sj49/example.py'>
+>>> 
+>>> import sys
+>>> del sys.modules['example']
+>>> import example
+hello
+100
+>>> 
+>>> 
+>>> reload(example)
+hello
+100
+<module 'example' from '/Users/raymondhettinger/dropbox/Public/sj49/example.py'>
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+>>> myimport('example')
+>>> myreload(example)
+hello
+100
+<__main__.Module object at 0x101761490>
+>>> ================================ RESTART ================================
+>>> 
+hello
+100
+10
+25
+0
+>>> 
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> ================================ RESTART ================================
+>>> from heapq
+SyntaxError: invalid syntax
+>>> from heapq import *
+>>> 
+>>> s = [100, 45, 35, 200, 40, 10, 20]
+>>> heapify(s)
+>>> s
+[10, 40, 20, 200, 45, 35, 100]
+>>> s[0]
+10
+>>> heappop(s)
+10
+>>> s
+[20, 40, 35, 200, 45, 100]
+>>> heappush(s, 10)
+>>> s
+[10, 40, 20, 200, 45, 100, 35]
+>>> 
+>>> 
+>>> # Heaps
+>>> # Smallest element always on top
+>>> # Parents are always less than or equal to their children
+>>> # Stored as a list representing a binary tree
+>>> # heapify(s)                   O(n)
+>>> # heappush(s, v)               O(log n)
+>>> # heappop(s, v)                O(log n)
+>>> 
+>>> # s[0]                         O(1)
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # Heapsort
+>>> s = [100, 45, 35, 200, 40, 10, 20]
+>>> heapify(s)
+>>> while s:
+	print heappop(s)
+
+	
+10
+20
+35
+40
+45
+100
+200
+>>> 
+>>> # sort orders
+>>> 'matthew' < 'raymond'
+True
+>>> 'raymond' < 'rachel'
+False
+>>> # r==r, a==a, y>c             # lexicographics
+>>> 
+>>> sorted(['raymond', 'rachel'])
+['rachel', 'raymond']
+>>> 
+>>> sorted([  (10, 5, 18, 1000), (10, 5, 1, 5000) ])
+[(10, 5, 1, 5000), (10, 5, 18, 1000)]
+>>> sorted([  (10, [5, 4], [18, 1000]), (10, [5, 4], [1, 5000]) ])
+[(10, [5, 4], [1, 5000]), (10, [5, 4], [18, 1000])]
+>>> 
+>>> 
+>>> 
+>>> todo = [
+	(20, 'mow lawn'),
+	(5, 'feed baby'),
+	(6, 'teach class'),
+	(10, 'take nap')]
+>>> 
+>>> heapify(todo)
+>>> heappop(todo)
+(5, 'feed baby')
+>>> heappush((17, 'wash car'))
+
+Traceback (most recent call last):
+  File "<pyshell#449>", line 1, in <module>
+    heappush((17, 'wash car'))
+TypeError: heappush expected 2 arguments, got 1
+>>> heappush(todo, (17, 'wash car'))
+>>> heappop(todo)
+(6, 'teach class')
+>>> heappop(todo)
+(10, 'take nap')
+>>> heappop(todo)
+(17, 'wash car')
+>>> heappop(todo)
+(20, 'mow lawn')
+>>> 
+>>> 
+>>> # Primary use case for heaps:  Priority Queue
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import time
+>>> time.time()
+1371596706.772292
+>>> time.ctime()
+'Tue Jun 18 16:05:11 2013'
+>>> x = 10; print x
+10
+>>> time.sleep(5.5); print 'Done!'
+Done!
+>>> 
+>>> 
+>>> (0, 4)
+(0, 4)
+>>> # namedtuple will improve readability
+>>> todo = [
+	(20, 'mow lawn'),
+	(5, 'feed baby'),
+	(6, 'teach class'),
+	(10, 'take nap')]
+>>> 
+>>> todo
+[(20, 'mow lawn'), (5, 'feed baby'), (6, 'teach class'), (10, 'take nap')]
+>>> from pprint import pprint
+>>> pprint(todo, width=20)
+[(20, 'mow lawn'),
+ (5, 'feed baby'),
+ (6,
+  'teach class'),
+ (10, 'take nap')]
+>>> pprint(todo, width=25)
+[(20, 'mow lawn'),
+ (5, 'feed baby'),
+ (6, 'teach class'),
+ (10, 'take nap')]
+>>> pprint(todo, width=2000)
+[(20, 'mow lawn'), (5, 'feed baby'), (6, 'teach class'), (10, 'take nap')]
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> add_task(20, 'mow lawn')
+>>> add_task(5, 'feed baby')
+>>> add_task(6, 'teach class')
+>>> add_task(10, 'take nap')
+>>> 
+>>> pprint(events)
+[ScheduledEvent(event_time=5, task='feed baby'),
+ ScheduledEvent(event_time=10, task='take nap'),
+ ScheduledEvent(event_time=6, task='teach class'),
+ ScheduledEvent(event_time=20, task='mow lawn')]
+>>> 
+>>> 
+>>> 
+>>> def say_welcome():
+	print 'Hello'
+
+	
+>>> def say_goodbye():
+	print 'Adios!'
+
+	
+>>> s = [say_welcome, say_goodbye]
+>>> s
+[<function say_welcome at 0x1017666e0>, <function say_goodbye at 0x101766758>]
+>>> 
+>>> for f in s:
+	f()
+
+	
+Hello
+Adios!
+>>> s[0]()
+Hello
+>>> s[`]()
+SyntaxError: invalid syntax
+>>> s[1]()
+Adios!
+>>> ================================ RESTART ================================
+>>> 
+>>> show_ten()
+10
+>>> ================================ RESTART ================================
+>>> 
+>>> pprint(events)
+[ScheduledEvent(event_time=1371597621.690201, task=<function show_two at 0x1017687d0>),
+ ScheduledEvent(event_time=1371597624.690188, task=<function show_ten at 0x101768758>)]
+>>> ================================ RESTART ================================
+>>> 
+2
+10
+>>> ================================ RESTART ================================
+>>> 
+2
+10
+>>> ================================ RESTART ================================
+>>> 
+2
+10
+>>> ================================ RESTART ================================
+>>> 
+2
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/event_loop.py", line 41, in <module>
+    event_loop()
+  File "/Users/raymondhettinger/dropbox/Public/sj49/event_loop.py", line 27, in event_loop
+    sleep(0.1)
+KeyboardInterrupt
+>>> ================================ RESTART ================================
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+2
+>>> events
+[ScheduledEvent(event_time=1371597904.099296, task=<function show_ten at 0x101767758>)]
+>>> ================================ RESTART ================================
+>>> 
+3
+3
+2
+3
+3
+3
+10
+3
+3
+3
+3
+>>> ================================ RESTART ================================
+>>> 
+3
+hello
+3
+2
+3
+hello
+3
+3
+10
+hello
+3
+3
+3
+hello
+3
+3
+hello
+3
+3
+hello
+3
+3
+3
+hello
+3
+3
+hello
+3
+3
+hello
+3
+3
+3
+hello
+3
+3
+3
+3
+>>> ================================ RESTART ================================
+>>> 
+3
+hello
+3
+Adios
+2
+3
+hello
+3
+Adios
+3
+10
+hello
+3
+3
+Adios
+hello
+3
+3
+Adios
+3
+hello
+3
+Adios
+3
+hello
+3
+Adios
+3
+hello
+3
+3
+Adios
+3
+hello
+3
+Adios
+3
+hello
+3
+Adios
+3
+hello
+3
+3
+Adios
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+>>> # Select is everywhere and usually poorly implented
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> d = Cls()
+>>> d['raymond'] = 'red'
+>>> d
+{'raymond': 'red'}
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Dog
+{'__name__': 'Dog', 'bark': <function bark at 0x101765398>, '__bases__': ({'__name__': 'Animal', '__bases__': (), '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x1017652a8>, 'walk': <function walk at 0x101765320>},), '__doc__': 'Specialization of Animal'}
+>>> type(Dog)
+<class '__main__.Cls'>
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 66, in <module>
+    if _name_ == '__main__':
+NameError: name '_name_' is not defined
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 66, in <module>
+    if _name_ == '__main__':
+NameError: name '_name_' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 56, in <module>
+    Dog = make_class('Dog', (Animal,), '''
+NameError: name 'make_class' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Dog
+{'_bases_': ({'_bases_': (), '_init_': <function _init_ at 0x101765230>, 'walk': <function walk at 0x101765320>, '__doc__': 'Demonstration of a simple Animal class', '_name_': 'Animal'},), 'bark': <function bark at 0x101765398>, '__doc__': 'Specialization of Animal', '_name_': 'Dog'}
+>>> type(Dog)
+<class '__main__.Cls'>
+>>> Dog['bark']
+<function bark at 0x101765398>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> cls_lookup(Dog, 'bark')
+<function bark at 0x101765410>
+>>> Dog.bark
+<function bark at 0x101765410>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> Dog.bark(d)
+Woof!
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 68, in <module>
+    d = make_inst(Dog, 'Fido')                       # d = Dog('Fido')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 20, in make_inst
+    inst['_class_'] = cls
+TypeError: 'type' object does not support item assignment
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> inst_lookup(d, 'name')
+'Fido'
+>>> d.name
+'Fido'
+>>> ================================ RESTART ================================
+>>> 
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 68, in <module>
+    d = make_inst(Dog, 'Fido')                       # d = Dog('Fido')
+  File "/Users/raymondhettinger/dropbox/Public/sj49/operator_class.py", line 22, in make_inst
+    inst_lookup(inst, '_init_')(*args)
+NameError: global name 'inst_lookup' is not defined
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> dir(len)
+['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 

@@ -1,0 +1,9 @@
+'Implement a bitarray'
+
+class BitArray:
+    def __init__(self, numbits):
+        self.numbits = numbits
+        numbytes = (numbits + 7) //8
+        self.array = bytearray (numbytes)
+        
+

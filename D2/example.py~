@@ -1,0 +1,4 @@
+'A simple module demonstration
+
+x = 10
+def square(x):

@@ -1,0 +1,19 @@
+I) LISTS
+Expensive memory operations in List
+	a. List pop (n), del list[n], list.insert (n, item)
+	b. O(n) complexity
+	c. Overallocation is done at 1/8 rate after first doubling
+	d. pop is the fastest operation in python
+	e. deque() is fast at both ends
+
+PreSize
+	a. [none] * n will pre-size
+	b. map() and list() presize
+
+II) SETS
+
+	a. When 2/3 full, grows by factor of 4
+	b. Smallest size is 8
+	c. Entries have 2 elements
+	d. dictionaries have more wasted space but scale well. Always (1)
+	e. 

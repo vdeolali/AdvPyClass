@@ -1,0 +1,3 @@
+LIBRARY demo.pyd
+EXPORTS
+initdemo

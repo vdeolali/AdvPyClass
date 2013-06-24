@@ -1,0 +1,9 @@
+To learn about class logic and metaclasses,
+we made a series of code transformations:
+
+regular            Real class that we are trying to model
+dict               Show the underlying dicts
+function           Add functions:  make_class, make_inst, class_lookup, inst_lookup
+operator           Use __getattr__ for lookup:    Dog(Fido)   Dog.bark     d.bark()
+class              Use the class-keyword to do the exec for us
+new-style          Add the __get__ descriptor hook 

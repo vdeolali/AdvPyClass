@@ -1,0 +1,24 @@
+'Develop advanced skills with dictionaries'
+
+# Dict contructors
+
+d = {'raymond':'red', 'rachel':'blue'}
+
+d = dict([('raymond', 'red'), ('rachel', 'blue')])
+
+d =dict(raymond='red', rachel='blue')
+
+######################
+# dict.fromkeys(seq)
+
+names = 'raymond rachel matthew'.split()
+d = dict.fromkeys(names, '<unspecified>')
+
+
+##########
+
+# d[k] looks up k and returns the values
+# if k is not found, it calls d.__missing__(k)
+# the default behavior of __missing is to raise a KeyError
+# A super power of dictionaries is the ability to override this
+

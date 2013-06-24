@@ -1,0 +1,24 @@
+counter = 0
+
+
+class String:
+    def __init__(self,size):
+        global counter
+        self.position = counter
+        self.size = size
+        counter += 1
+        self.size = size
+
+
+class Int:
+
+    def __init__(self,size):
+        global counter
+        self.position = counter
+        counter += 1
+        self.size = size
+
+
+class Model:
+    pass
+

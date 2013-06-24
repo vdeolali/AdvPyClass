@@ -1,0 +1,1705 @@
+Python 2.7.5 (v2.7.5:ab05e7dd2788, May 13 2013, 13:18:45) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> range(2, 10)
+[2, 3, 4, 5, 6, 7, 8, 9]
+>>> range(2, 10, 3)  # start stop step
+[2, 5, 8]
+>>> 
+>>> [10, 20] + [30]
+[10, 20, 30]
+>>> 3 + 3 + 3 + 3 + 3
+15
+>>> 3 * 5
+15
+>>> [10] + [10] + [10] + [10]+ [10]
+[10, 10, 10, 10, 10]
+>>> [10] * 5
+[10, 10, 10, 10, 10]
+>>> [0] * 100
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> [None] * 100
+[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> [None] * 10
+[None, None, None, None, None, None, None, None, None, None]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+[None] * 10
+[None, None, None, None, None, None, None, None, None, None]
+>>> 
+>>> 
+>>> # How to instrument Python objects
+>>> # Understand x==y implies hash(x)==hash(y)
+>>> # Deepen understand of object identity versus equality
+>>> # Recognize good hash versus bad
+>>> 
+>>> 
+>>> 
+
+>>> dir(int)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+>>> 
+>>> 
+>>> # equality tests are based on either __eq__ or __cmp__
+>>> 
+>>> 
+>>> 3 == 5
+False
+>>> (3).__cmp__(5)
+-1
+>>> (5).__cmp__(5)
+0
+>>> (7).__cmp__(5)
+1
+>>> 
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return hash(int(self))
+
+	
+>>> s = map(Int, [10, 20, 30, 40, 50, 60])
+>>> s
+[10, 20, 30, 40, 50, 60]
+>>> type(s[0])
+<class '__main__.Int'>
+>>> s.append(s[2])
+>>> s
+[10, 20, 30, 40, 50, 60, 30]
+>>> s.append(Int(10))
+>>> s
+[10, 20, 30, 40, 50, 60, 30, 10]
+>>> map(id, s)
+[4318956936, 4318973032, 4318976048, 4318977272, 4318947952, 4318948744, 4318976048, 4318976192]
+>>> 
+>>> 
+>>> 
+>>> a = Int(100)
+>>> b = a
+>>> c = Int(100)
+>>> d = Int(150)
+>>> 
+>>> id(a)
+4318948888
+>>> id(b)
+4318948888
+>>> a == b         # Identity implies equality
+!
+True
+>>> # The == operator DOESN'T check identity first -- It always calls __cmp__.
+>>> # All the builtin containers assume identity implies equality
+>>> 
+>>> t = [a]
+>>> b in t
+True
+>>> c
+100
+>>> a
+100
+>>> a == c
+!
+True
+>>> id(a)
+4318948888
+>>> id(c)
+4318980936
+>>> c in t
+!
+True
+>>> 
+>>> 
+>>> s
+[10, 20, 30, 40, 50, 60, 30, 10]
+>>> a in s
+!
+!
+!
+!
+!
+!
+!
+!
+False
+>>> s[2] in s
+!
+!
+True
+>>> Int(1000) in s
+!
+!
+!
+!
+!
+!
+!
+!
+False
+>>> 
+>>> 
+>>> hash(1234)
+1234
+>>> hash(a)
+#
+100
+>>> 
+>>> 
+>>> 
+>>> 
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return hash(int(self))
+
+	
+>>> a = Int(100)
+>>> b = Int(101)
+>>> s = {a, b}
+#
+#
+>>> a in s
+#
+True
+>>> Int(100) in s
+#
+!
+True
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return 4
+
+	
+>>> 
+>>> hash(Int(12345))
+#
+4
+>>> hash(Int(123))
+#
+4
+>>> 
+>>> s = set(map(Int, [10, 20, 30, 40, 50, 60]))
+#
+#
+!
+#
+!
+!
+#
+!
+!
+!
+#
+!
+!
+!
+!
+!
+#
+!
+!
+!
+!
+!
+!
+>>> s
+set([20, 40, 30, 50, 60, 10])
+>>> Int(60) in s
+#
+!
+!
+True
+>>> Int(20) in s
+#
+!
+True
+>>> Int(10) in s
+#
+!
+!
+!
+True
+>>> Int(50) in s
+#
+!
+!
+!
+!
+True
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return hash(int(self))
+
+	
+>>> s = set(map(Int, [10, 20, 30, 40, 50, 60]))
+#
+#
+#
+#
+#
+#
+>>> Int(50) in s
+#
+!
+True
+>>> Int(20) in s
+#
+!
+True
+>>> Int(10) in s
+#
+!
+True
+>>> 
+>>> 
+>>> from random import *
+>>> range(20)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> randrange(20)
+4
+>>> randrange(20)
+17
+>>> randrange(20)
+9
+>>> randrange(1000, 1020)
+1014
+>>> 
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return randrange(100000)
+
+	
+>>> a = Int(100)
+>>> hash(a)
+#
+28467
+>>> hash(a)
+#
+37117
+>>> 
+>>> s = {Int(100), Int(200)}
+#
+#
+>>> Int(100) in s
+#
+False
+>>> 
+>>> 
+>>> # Good hash functions evenly distribute among neighborhoods AND they never change
+>>> # hence lists and dictionaries (which are mutable) are unhashable
+>>> 
+>>> 
+>>> 
+>>> s = {Int(100), Int(200), Int(300)}
+#
+#
+#
+>>> t = {Int(400), Int(300), Int(200)}
+#
+#
+#
+>>> 
+>>> s & t
+set([])
+>>> class Int(int):
+	def __cmp__(self, other):
+		print '!'
+		return cmp(int(self), int(other))
+	def __hash__(self):
+		print '#'
+		return hash(int(self))
+
+	
+>>> s = {Int(100), Int(200), Int(300)}
+#
+#
+#
+>>> t = {Int(400), Int(300), Int(200)}
+#
+#
+#
+>>> s & t
+!
+!
+set([200, 300])
+>>> s - t
+!
+!
+set([100])
+>>> t - s
+!
+!
+set([400])
+>>> s | t
+!
+!
+set([400, 100, 200, 300])
+>>> 
+>>> 
+>>> a, b, c, d = Int(100), Int(200), Int(300), Int(400)
+>>> s
+set([200, 100, 300])
+>>> t
+set([200, 400, 300])
+>>> 
+>>> s = {a, b, c}
+#
+#
+#
+>>> t = {d, c, b}
+#
+#
+#
+>>> s
+set([200, 100, 300])
+>>> t
+set([200, 400, 300])
+>>> s & t
+set([200, 300])
+>>> s - t
+set([100])
+>>> t - s
+set([400])
+>>> s & t
+set([200, 300])
+>>> dict.fromkeys(s)
+{200: None, 300: None, 100: None}
+>>> set(dict.fromkeys(s))
+set([200, 100, 300])
+>>> 
+>>> 
+>>> 
+>>> from collections import deque
+>>> d = deque()
+>>> d.append(10)
+>>> d.append(20)
+>>> d
+deque([10, 20])
+>>> d.appendleft(0)
+>>> d
+deque([0, 10, 20])
+>>> d.appendleft(-10)
+>>> d
+deque([-10, 0, 10, 20])
+>>> d.pop()
+20
+>>> d
+deque([-10, 0, 10])
+>>> d.popleft()
+-10
+>>> d
+deque([0, 10])
+>>> 
+>>> 
+>>> d.extend(range(20))
+>>> d
+deque([0, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+>>> 
+>>> 
+>>> s = [1000, 2000]
+>>> d.append(s)
+>>> s
+[1000, 2000]
+>>> d
+deque([0, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, [1000, 2000]])
+>>> d.extend(s)
+>>> d
+deque([0, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, [1000, 2000], 1000, 2000])
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> t = []
+>>> s = [1000, 2000, 3000]
+>>> t.append(s)
+>>> t
+[[1000, 2000, 3000]]
+>>> t.append(s)
+>>> t
+[[1000, 2000, 3000], [1000, 2000, 3000]]
+>>> 
+>>> for x in s:
+	t.append(x)
+
+	
+>>> t
+[[1000, 2000, 3000], [1000, 2000, 3000], 1000, 2000, 3000]
+>>> t.extend(s)
+>>> t
+[[1000, 2000, 3000], [1000, 2000, 3000], 1000, 2000, 3000, 1000, 2000, 3000]
+>>> 
+>>> d
+deque([0, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, [1000, 2000], 1000, 2000])
+>>> s
+[1000, 2000, 3000]
+>>> d.extendleft(s)
+>>> d
+deque([3000, 2000, 1000, 0, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, [1000, 2000], 1000, 2000])
+>>> 
+>>> 
+>>> 
+>>> d = deque()
+>>> s = 'Raymond'
+>>> d.extendleft(s)
+>>> d
+deque(['d', 'n', 'o', 'm', 'y', 'a', 'R'])
+>>> d.extend(s)
+>>> d
+deque(['d', 'n', 'o', 'm', 'y', 'a', 'R', 'R', 'a', 'y', 'm', 'o', 'n', 'd'])
+>>> 
+>>> x = d.popleft()
+>>> x
+'d'
+>>> d.append(x)
+>>> d
+deque(['n', 'o', 'm', 'y', 'a', 'R', 'R', 'a', 'y', 'm', 'o', 'n', 'd', 'd'])
+>>> d.rotate(1)
+>>> d
+deque(['d', 'n', 'o', 'm', 'y', 'a', 'R', 'R', 'a', 'y', 'm', 'o', 'n', 'd'])
+>>> d.rotate(-1)
+>>> d
+deque(['n', 'o', 'm', 'y', 'a', 'R', 'R', 'a', 'y', 'm', 'o', 'n', 'd', 'd'])
+>>> d.rotate(5)
+>>> d
+deque(['m', 'o', 'n', 'd', 'd', 'n', 'o', 'm', 'y', 'a', 'R', 'R', 'a', 'y'])
+>>> 
+>>> # list :->   append pop extend     appendleft  popleft  extendleft
+>>> 
+>>> # API -- bridge off of what people know -- minimize the learning curve
+>>> #     -- substitutable for regular list
+>>> 
+>>> 
+>>> s = list('Hettinger')
+>>> s
+['H', 'e', 't', 't', 'i', 'n', 'g', 'e', 'r']
+>>> 
+>>> s[:3]
+['H', 'e', 't']
+>>> s[3:]
+['t', 'i', 'n', 'g', 'e', 'r']
+>>> 
+>>> s[0:3]
+['H', 'e', 't']
+>>> s[3:len(s)]
+['t', 'i', 'n', 'g', 'e', 'r']
+>>> 
+>>> 
+>>> s[-1]
+'r'
+>>> s[-2]
+'e'
+>>> 
+>>> s[-3:]
+['g', 'e', 'r']
+>>> s[len(s)-1]
+'r'
+>>> s[-1]
+'r'
+>>> 
+>>> 
+>>> s[len(s)-3: len(s)]
+['g', 'e', 'r']
+>>> s[-3:]
+['g', 'e', 'r']
+>>> 
+>>> 
+>>> 
+>>> range(2, 10)
+[2, 3, 4, 5, 6, 7, 8, 9]
+>>> range(2, 10, 3)
+[2, 5, 8]
+>>> 
+>>> s
+['H', 'e', 't', 't', 'i', 'n', 'g', 'e', 'r']
+>>> s[::-1]
+['r', 'e', 'g', 'n', 'i', 't', 't', 'e', 'H']
+>>> 
+>>> s[::2]
+['H', 't', 'i', 'g', 'r']
+>>> s[1::2]
+['e', 't', 'n', 'e']
+>>> s[1::2] = ['E', 'T', 'N', 'E']
+>>> s
+['H', 'E', 't', 'T', 'i', 'N', 'g', 'E', 'r']
+>>> s[5::-2]
+['N', 'T', 'E']
+>>> s[5::-2] = '***'
+>>> s
+['H', '*', 't', '*', 'i', '*', 'g', 'E', 'r']
+>>> s[5::-2] = [0, 1, 2]
+>>> s
+['H', 2, 't', 1, 'i', 0, 'g', 'E', 'r']
+>>> 
+>>> s
+['H', 2, 't', 1, 'i', 0, 'g', 'E', 'r']
+>>> del s[:3]
+>>> s
+[1, 'i', 0, 'g', 'E', 'r']
+>>> s[5::-2] = [0, 1, 2]
+>>> s
+[1, 2, 0, 1, 'E', 0]
+>>> 
+>>> 
+>>> d = deque('Hettinger', maxlen=3)
+>>> d
+deque(['g', 'e', 'r'], maxlen=3)
+>>> d.append('A')
+>>> d
+deque(['e', 'r', 'A'], maxlen=3)
+>>> deque('Hettinger', maxlen=0)
+deque([], maxlen=0)
+>>> 
+>>> 
+>>> map(ord, 'Raymond')
+[82, 97, 121, 109, 111, 110, 100]
+>>> deque(map(ord, 'Raymond'), maxlen=0)
+deque([], maxlen=0)
+>>> 
+>>> 
+>>> 
+>>> def g(x):
+	for i in xrange(x):
+		s = i*i
+		print s
+		yield s
+
+		
+>>> h = g(10)
+>>> next(h)
+0
+0
+>>> next(h)
+1
+1
+>>> next(h)
+4
+4
+>>> list(g(10))
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> deque(g(10), maxlen=0)
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+deque([], maxlen=0)
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # pop(0)   insert(0)    del s[0]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> p = 'Raymond', 'Hettinger', 0x30, 'python@rcn.com'
+>>> type(p)
+<type 'tuple'>
+>>> 
+>>> 
+>>> 
+>>> (0, 4)
+(0, 4)
+>>> t = (0, 4)
+>>> 
+>>> from collections import namedtuple
+>>> Person = namedtuple('Person', ['fname', 'lname', 'age', 'email'])
+>>> 
+>>> 
+
+>>> p = Person('Raymond', 'Hettinger', 0x30, 'python@rcn.com')
+>>> p
+Person(fname='Raymond', lname='Hettinger', age=48, email='python@rcn.com')
+>>> p[2]
+48
+>>> p.age
+48
+>>> p._replace(age=49)
+Person(fname='Raymond', lname='Hettinger', age=49, email='python@rcn.com')
+>>> p._replace(age=41, fname='Rachel')
+Person(fname='Rachel', lname='Hettinger', age=41, email='python@rcn.com')
+>>> 
+>>> 
+>>> 
+>>> p._asdict()
+OrderedDict([('fname', 'Raymond'), ('lname', 'Hettinger'), ('age', 48), ('email', 'python@rcn.com')])
+>>> 
+>>> 
+>>> p.age
+48
+>>> from collections import *
+>>> 
+>>> 
+>>> p._replace(age=49)
+Person(fname='Raymond', lname='Hettinger', age=49, email='python@rcn.com')
+>>> p
+Person(fname='Raymond', lname='Hettinger', age=48, email='python@rcn.com')
+>>> 
+>>> 
+>>> t = p._replace(age=49)
+>>> p
+Person(fname='Raymond', lname='Hettinger', age=48, email='python@rcn.com')
+>>> t
+Person(fname='Raymond', lname='Hettinger', age=49, email='python@rcn.com')
+>>> 
+>>> 
+>>> 
+>>> s = 'the tale of two cities'
+>>> s.replace('two', 'three')
+'the tale of three cities'
+>>> s
+'the tale of two cities'
+>>> s = s.replace('two', 'three')
+>>> s
+'the tale of three cities'
+>>> 
+>>> 
+>>> from collections import *
+>>> TestResults = namedtuple('TestResults', ['failed', 'attempted'])
+>>> t = TestResult(0, 4)
+
+Traceback (most recent call last):
+  File "<pyshell#384>", line 1, in <module>
+    t = TestResult(0, 4)
+NameError: name 'TestResult' is not defined
+>>> t = TestResults(0, 4)
+>>> 
+>>> 
+>>> t
+TestResults(failed=0, attempted=4)
+>>> t.failed
+0
+>>> t.attempted
+4
+>>> t[0]
+0
+>>> t[1]
+4
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = [100, 110, 120, 130]
+>>> len(s)
+4
+>>> s[0]
+100
+>>> s[3]
+130
+>>> 
+>>> d = {0: 100, 1: 110, 2: 120, 3: 130}
+>>> len(d)
+4
+>>> d[0]
+100
+>>> d[3]
+130
+>>> d['red'] = 'Color'
+>>> d
+{0: 100, 1: 110, 2: 120, 3: 130, 'red': 'Color'}
+>>> s.append('red')
+>>> s
+[100, 110, 120, 130, 'red']
+>>> 
+>>> 
+>>> # Concept grid:   mutable/immutabe   hashable/unhashable  ordered/unordered
+>>> 
+>>> # Bloomfilter
+>>> # Really simple class --> pick apart and rebuild it from scratch.
+
+>>> class A:
+	def __eq__(self, other):
+		print 'EQ was here!'
+	def __cmp__(self, other):
+		print 'CMP was here!'
+
+		
+>>> a = A()
+>>> b = A()
+>>> a == b
+EQ was here!
+>>> dir(int)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+>>> 
+>>> 
+>>> dir(str)
+['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '
+SyntaxError: EOL while scanning string literal
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s = [10, 20, 30]
+>>> {s: 'some list'}
+
+Traceback (most recent call last):
+  File "<pyshell#438>", line 1, in <module>
+    {s: 'some list'}
+TypeError: unhashable type: 'list'
+>>> class List(list):
+	def __hash__(self):
+		return sum(self)
+
+	
+>>> s = List([10, 20, 30])
+>>> s
+[10, 20, 30]
+>>> hash(s)
+60
+>>> {s: 'some list'}
+{[10, 20, 30]: 'some list'}
+>>> s.append(40)
+>>> s.append(40)
+>>> 
+>>> 
+>>> 
+>>> s
+[10, 20, 30, 40, 40]
+>>> d = {s: 'some list'}
+>>> d
+{[10, 20, 30, 40, 40]: 'some list'}
+>>> d[s]
+'some list'
+>>> s.append(60)
+>>> s
+[10, 20, 30, 40, 40, 60]
+>>> hash(s)
+200
+>>> d[s]
+
+Traceback (most recent call last):
+  File "<pyshell#459>", line 1, in <module>
+    d[s]
+KeyError: [10, 20, 30, 40, 40, 60]
+>>> 
+>>> 
+>>> # Learn a new algorithm
+>>> # How to build a data structure in pure python
+>>> # Remind you about magic methods
+>>> # Tour the standard library
+>>> # Design process
+>>> # Talk about design alternative and performance benefits
+>>> 
+>>> 
+>>> from random import *
+>>> random()
+0.0762591947748481
+>>> random()
+0.7482232796699625
+>>> 
+>>> seed(8675309)
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # PUSH:   import random   and from random import *            Yes!
+>>> 
+>>> 
+>>> 
+>>> from random import *
+>>> seed(8675309)
+>>> random()
+0.40224696110279223
+>>> random()
+0.5102471779215914
+>>> 
+>>> seed(8675309)
+>>> random()
+0.40224696110279223
+>>> random()
+0.5102471779215914
+>>> 
+>>> 
+>>> 
+>>> 
+>>> randrange(1000)
+663
+>>> randrange(1000)
+860
+>>> randrange(1000)
+280
+>>> int(random() * 1000)
+641
+>>> randrange(1000)
+647
+>>> s = ['win', 'lose', 'draw']
+>>> i = int(random() * len(s)]
+SyntaxError: invalid syntax
+>>> s[int(random() * len(s))]
+'win'
+>>> s[int(random() * len(s))]
+'draw'
+>>> s[int(random() * len(s))]
+'win'
+>>> choice(s)
+'win'
+>>> choice(s)
+'draw'
+>>> 
+>>> [2, 4, 6, 8]
+[2, 4, 6, 8]
+>>> [i*i for i in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+>>> [choice(s) for i range(10)]
+SyntaxError: invalid syntax
+>>> [choice(s) for i in range(10)]
+['lose', 'win', 'win', 'win', 'lose', 'draw', 'lose', 'draw', 'win', 'draw']
+>>> [choice(s) for i in range(10)]       # style of sampling with replacement
+['win', 'draw', 'draw', 'lose', 'win', 'draw', 'draw', 'lose', 'lose', 'lose']
+>>> 
+>>> [randrange(20) for i in range(10)]       # style of sampling with replacement
+[10, 0, 4, 12, 9, 16, 3, 0, 16, 9]
+>>> 
+>>> 
+>>> sample(range(20), 10)                    # sampling without replacement
+[7, 4, 10, 5, 8, 16, 9, 11, 15, 12]
+>>> sample(range(20), 30)                    # sampling without replacement
+
+Traceback (most recent call last):
+  File "<pyshell#519>", line 1, in <module>
+    sample(range(20), 30)                    # sampling without replacement
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py", line 320, in sample
+    raise ValueError("sample larger than population")
+ValueError: sample larger than population
+>>> names = 'raymond rachel matthew tbd'.split()
+>>> names
+['raymond', 'rachel', 'matthew', 'tbd']
+>>> 
+>>> 
+>>> shuffle(names)
+>>> names
+['matthew', 'rachel', 'tbd', 'raymond']
+>>> shuffle(names)
+>>> names
+['raymond', 'matthew', 'tbd', 'rachel']
+>>> 
+>>> names = tuple(names)
+>>> names
+('raymond', 'matthew', 'tbd', 'rachel')
+>>> shuffle(names)
+
+Traceback (most recent call last):
+  File "<pyshell#531>", line 1, in <module>
+    shuffle(names)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py", line 288, in shuffle
+    x[i], x[j] = x[j], x[i]
+TypeError: 'tuple' object does not support item assignment
+>>> 
+>>> 
+>>> range(1, 57)
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+>>> randrange(1, 57)
+54
+>>> [randrange(1, 57) for i in range(6)]
+[48, 4, 43, 17, 10, 18]
+>>> sample(range(1, 17), 6)
+[4, 9, 3, 13, 1, 8]
+>>> sorted(sample(range(1, 17), 6))
+[4, 5, 8, 12, 14, 16]
+>>> 
+>>> 
+>>> 
+>>> seed('raymond'); sorted(sample(range(1, 57), 6))
+[11, 12, 16, 22, 23, 42]
+>>> seed('raymond'); sorted(sample(range(1, 57), 6))
+[11, 12, 16, 22, 23, 42]
+>>> seed('matthew'); sorted(sample(range(1, 57), 6))
+[5, 11, 14, 26, 31, 48]
+>>> 
+>>> 
+>>> lucky = set()
+>>> for name in 'raymond rachel matthew tbd ramon gayle dennis sharon'.split():
+	seed(name)
+	nums = sorted(sample(range(1, 57), 6))
+	print nums
+	lucky.update(nums)
+
+	
+[11, 12, 16, 22, 23, 42]
+[9, 17, 30, 32, 45, 55]
+[5, 11, 14, 26, 31, 48]
+[1, 3, 10, 17, 21, 56]
+[7, 22, 33, 42, 47, 52]
+[5, 7, 20, 21, 34, 56]
+[10, 20, 24, 34, 39, 54]
+[13, 21, 33, 39, 42, 44]
+>>> lucky
+set([1, 3, 5, 7, 9, 10, 11, 12, 13, 14, 16, 17, 20, 21, 22, 23, 24, 26, 30, 31, 32, 33, 34, 39, 42, 44, 45, 47, 48, 52, 54, 55, 56])
+>>> len(lucky)
+33
+>>> seed('roger')
+>>> nums = sorted(sample(range(1, 57), 6))
+>>> nums
+[29, 32, 34, 37, 43, 48]
+>>> set(nums) <= lucky
+False
+>>> # Bloomfilter -- a set of lucky numbers for many data elements
+>>> #    membership test:  are your lucky numbers a subset of ours
+>>> #    False Positives are possible
+>>> #    False Negatives are not possible
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> bf
+<__main__.Bloom instance at 0x1016e43f8>
+>>> bf.pop
+xrange(56)
+>>> bf.probes
+6
+>>> bf.combined
+set([41, 10, 11, 15, 21, 22])
+>>> ================================ RESTART ================================
+>>> 
+>>> bf.combined
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+>>> ================================ RESTART ================================
+>>> 
+>>> 
+>>> 20 in [10, 20, 30, 40]
+True
+>>> 20 in {10, 20, 30, 40}
+True
+>>> 20 in [10, 20, 30, 40]
+True
+>>> [10, 20, 30, 40].__contains__(20)
+True
+>>> ================================ RESTART ================================
+>>> 
+>>> 'raymond' in hettingers
+
+Traceback (most recent call last):
+  File "<pyshell#576>", line 1, in <module>
+    'raymond' in hettingers
+  File "/Users/raymondhettinger/dropbox/Public/sj49/bloom.py", line 20, in __contains__
+    return lucky <= self.combined
+TypeError: can only compare to a set
+>>> ================================ RESTART ================================
+>>> 
+>>> 'raymond' in hettingers
+True
+>>> 'matthew' in hettingers
+True
+>>> 'roger' in hettingers
+False
+>>> bf.combined
+
+Traceback (most recent call last):
+  File "<pyshell#580>", line 1, in <module>
+    bf.combined
+NameError: name 'bf' is not defined
+>>> hettingers.combined
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+>>> 
+>>> 
+>>> a = [0] * 56
+>>> s
+
+Traceback (most recent call last):
+  File "<pyshell#585>", line 1, in <module>
+    s
+NameError: name 's' is not defined
+>>> a
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> s[25] = 1
+
+Traceback (most recent call last):
+  File "<pyshell#587>", line 1, in <module>
+    s[25] = 1
+NameError: name 's' is not defined
+>>> a[25] = 1
+>>> a
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> 
+>>> 
+>>> NameError: name 's' is not defined
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> a
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> a[2] = 1
+>>> a
+[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> a[2] = 1
+>>> a
+[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> any([True, True, False, True])
+True
+>>> all([True, True, False, True])
+False
+>>> ================================ RESTART ================================
+>>> 
+>>> hettingers.array
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1]
+>>> ================================ RESTART ================================
+>>> 
+>>> 'raymond' in hettingers
+True
+>>> 'roger' in hettingers
+False
+>>> ================================ RESTART ================================
+>>> 
+>>> s = []
+>>> s.append('raymond')
+>>> s.append(20)
+>>> s.append(('abc', 'def'))
+>>> s
+['raymond', 20, ('abc', 'def')]
+>>> s[0]
+'raymond'
+>>> s[1]
+20
+>>> s[2]
+('abc', 'def')
+>>> 
+>>> b = bytearray()
+>>> b.append(10)
+>>> b.append(20)
+>>> list(b)
+[10, 20]
+>>> b.append(300)
+
+Traceback (most recent call last):
+  File "<pyshell#626>", line 1, in <module>
+    b.append(300)
+ValueError: byte must be in range(0, 256)
+>>> b.append('raymond')
+
+Traceback (most recent call last):
+  File "<pyshell#627>", line 1, in <module>
+    b.append('raymond')
+ValueError: string must be of size 1
+>>> b[0] = 100
+>>> list(b)
+[100, 20]
+>>> ================================ RESTART ================================
+>>> 
+>>> 'raymond' in hettingers
+True
+>>> 'roger' in hettingers
+False
+>>> ord('A')
+65
+>>> b = bytearray(1000000)
+>>> len(b)
+1000000
+>>> b[15] = 1
+>>> b[15] = 112341234
+
+Traceback (most recent call last):
+  File "<pyshell#636>", line 1, in <module>
+    b[15] = 112341234
+ValueError: byte must be in range(0, 256)
+>>> bytearray(56)
+bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+>>> 
+>>> 
+>>> 
+>>> [10, 20, 30] + [40]
+[10, 20, 30, 40]
+>>> [10, 20, 30] + [40, 50, 60]
+[10, 20, 30, 40, 50, 60]
+>>> 
+>>> [10] + [10] + [10]
+[10, 10, 10]
+>>> [10] * 3
+[10, 10, 10]
+>>> 
+>>> 
+>>> 'hello' + ' world'
+'hello world'
+>>> 'x' + 'x' + 'x'
+'xxx'
+>>> 'x' * 3
+'xxx'
+>>> from numpy import array
+>>> s = array([10, 20, 30])
+>>> t = array([40, 50, 60])
+>>> 
+>>> s + t
+array([50, 70, 90])
+>>> s * 3
+array([30, 60, 90])
+>>> 
+>>> 
+>>> s.dot(t)
+3200
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+A
+
+a
+
+aa
+
+aal
+
+aalii
+
+aam
+
+Aani
+
+aardvark
+
+aardwolf
+
+Aaron
+
+Aaronic
+
+Aaronical
+
+Aaronite
+
+Aaronitic
+
+Aaru
+
+Ab
+
+aba
+
+Ababdeh
+
+Ababua
+
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/bloom.py", line 30, in <module>
+    print line
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/idlelib/PyShell.py", line 1325, in write
+    return self.shell.write(s, self.tags)
+KeyboardInterrupt
+>>> line
+'Ababua\n'
+>>> ================================ RESTART ================================
+>>> 
+A
+a
+aa
+aal
+aalii
+aam
+Aani
+aardvark
+aardwolf
+Aaron
+Aaronic
+Aaronical
+Aaronite
+Aaronitic
+Aaru
+Ab
+aba
+Ababdeh
+Ababua
+abac
+abaca
+abacate
+abacay
+abacinate
+abacination
+Traceback (most recent call last):
+  File "/Users/raymondhettinger/dropbox/Public/sj49/bloom.py", line 30, in <module>
+    print line.rstrip()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/idlelib/PyShell.py", line 1325, in write
+    return self.shell.write(s, self.tags)
+KeyboardInterrupt
+>>> ================================ RESTART ================================
+>>> 
+>>> 'hello' in wordlist
+True
+>>> 'hellox' in wordlist
+False
+>>> # Book recommendation:  Programming Pearls and More Programming Pearls
+>>> ================================ RESTART ================================
+>>> 
+iss
+tyme
+alll
+mehn
+coome
+thhe
+thur
+>>> ================================ RESTART ================================
+>>> 
+iss
+tyme
+alll
+mehn
+coome
+thhe
+thur
+selz
+shells
+>>> 
+>>> 
+>>> hansolo = [10, 20, ('hello', 'world'), {'raymond': 'red'}]
+>>> len(hansolo)
+4
+>>> h[0]
+
+Traceback (most recent call last):
+  File "<pyshell#672>", line 1, in <module>
+    h[0]
+NameError: name 'h' is not defined
+>>> hansolo[-1]
+{'raymond': 'red'}
+>>> hansolo[-1]['raymond']
+'red'
+>>> type(hansolo[-1])
+<type 'dict'>
+>>> 
+>>> 
+>>> hansolo = [10, 20, ('hello', 'world'), {'raymond': 'red'}]
+>>> import pickle
+>>> s = pickle.dumps(hansolo)
+>>> type(s)
+<type 'str'>
+>>> print s
+(lp0
+I10
+aI20
+a(S'hello'
+p1
+S'world'
+p2
+tp3
+a(dp4
+S'raymond'
+p5
+S'red'
+p6
+sa.
+>>> del hansolo
+>>> s
+"(lp0\nI10\naI20\na(S'hello'\np1\nS'world'\np2\ntp3\na(dp4\nS'raymond'\np5\nS'red'\np6\nsa."
+>>> hansolo = pickle.loads(s)
+>>> hansolo
+[10, 20, ('hello', 'world'), {'raymond': 'red'}]
+>>> type(hansolo[-1])
+<type 'dict'>
+>>> 
+>>> s = pickle.dumps(hansolo, 2)
+>>> pickle.loads(s)
+[10, 20, ('hello', 'world'), {'raymond': 'red'}]
+>>> 
+>>> with open('hansolo.pck', 'wb') as f:
+	pickle.dump(hansolo, f)
+
+	
+>>> import xyz
+
+Traceback (most recent call last):
+  File "<pyshell#695>", line 1, in <module>
+    import xyz
+ImportError: No module named xyz
+>>> open('xyz.pcl')
+
+Traceback (most recent call last):
+  File "<pyshell#696>", line 1, in <module>
+    open('xyz.pcl')
+IOError: [Errno 2] No such file or directory: 'xyz.pcl'
+>>> ================================ RESTART ================================
+>>> 
+iss
+tyme
+alll
+mehn
+coome
+thhe
+thur
+selz
+shells
+>>> ================================ RESTART ================================
+>>> 
+iss
+tyme
+alll
+mehn
+coome
+thhe
+thur
+selz
+shells
+>>> 
+>>> 
+>>> 
+>>> bin(45)
+'0b101101'
+>>> 0b101101
+45
+>>> bin(45 << 1)
+'0b1011010'
+>>> bin(45 >> 1)
+'0b10110'
+>>> 
+>>> 
+>>> bin(45)
+'0b101101'
+>>> bin(13)
+'0b1101'
+>>> 
+>>> bin(45)
+'0b101101'
+>>> bin(11)
+'0b1011'
+>>> bin(45 & 11)
+'0b1001'
+>>> bin(45 | 11)
+'0b101111'
+>>> bin(45 ^ 11)
+'0b100110'
+>>> bin(45 ^ ~11)
+'-0b100111'
+>>> 
+>>> 
+>>> b = bytearray(3)
+>>> 
+>>> i = 11
+>>> 
+>>> divmod(i, 8)
+(1, 3)
+>>> bytepos, bitpos = divmod(i, 8)
+>>> 
+>>> bitpos
+3
+>>> 1 << bitpos
+8
+>>> 
+>>> i = 11
+>>> bytepos, bitpos = divmod(i, 8)
+>>> b[bytepos] |= 1 << bitpos
+>>> list(b)
+[0, 8, 0]
+>>> 
+>>> i = 13
+>>> bytepos, bitpos = divmod(i, 8)
+>>> bytepos
+1
+>>> bitpos
+5
+>>> b[bytepos] |= 1 << bitpos
+>>> 
+>>> list(b)
+[0, 40, 0]
+>>> bin(40)
+'0b101000'
+>>> (9+ 7) // 8
+2
+>>> (8+ 7) // 8
+1
+>>> 
+>>> 
+>>> b = bytearray(3)
+>>> b[1] = 40
+>>> list(b)
+[0, 40, 0]
+>>> b[1] = 40
+>>> b.__setitem__(1, 40)
+>>> 
+>>> 32 // 6
+5
+>>> 32 / 6
+5
+>>> 32 / 6.
+5.333333333333333
+>>> 32 // 6
+5
+>>> (32 + 5) // 6
+6
+>>> 
+>>> divmod(32, 6)
+(5, 2)
+>>> 
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> 
+>>> b = BitArray(20)
+>>> b.numbits
+20
+>>> b.array
+bytearray(b'\x00\x00\x00')
+>>> b[11] = 1
+>>> list(b.array)
+[0, 8, 0]
+>>> b[13] = 1
+>>> list(b.array)
+[0, 40, 0]
+>>> bin(40)
+'0b101000'
+>>> b[11]
+1
+>>> b[13]
+1
+>>> b[12]
+0
+>>> 
+>>> 
+>>> b[11] = 0
+>>> list(b.array)
+[0, 32, 0]
+>>> bin(32)
+'0b100000'
+>>> b[11]
+0
+>>> 
+>>> 'hello'[0]
+'h'
+>>> 'hello'[4]
+'o'
+>>> 'hello'[5]
+
+Traceback (most recent call last):
+  File "<pyshell#780>", line 1, in <module>
+    'hello'[5]
+IndexError: string index out of range
+>>> b.numbits
+20
+>>> b[21]
+0
+>>> ================================ RESTART ================================
+>>> 
+>>> b[21]
+
+Traceback (most recent call last):
+  File "<pyshell#783>", line 1, in <module>
+    b[21]
+NameError: name 'b' is not defined
+>>> b = BitArray(20)
+>>> b[21]
+
+Traceback (most recent call last):
+  File "<pyshell#785>", line 1, in <module>
+    b[21]
+  File "/Users/raymondhettinger/dropbox/Public/sj49/bitarray.py", line 21, in __getitem__
+    raise IndexError
+IndexError
+>>> b.numbits
+20
+>>> ================================ RESTART ================================
+>>> 
+>>> b = BitArray(20)
+>>> len(b)
+20
+>>> b[21]
+
+Traceback (most recent call last):
+  File "<pyshell#789>", line 1, in <module>
+    b[21]
+  File "/Users/raymondhettinger/dropbox/Public/sj49/bitarray.py", line 21, in __getitem__
+    raise IndexError
+IndexError
+>>> b[18]
+0
+>>> ================================ RESTART ================================
+>>> 
+iss
+tyme
+alll
+mehn
+coome
+thhe
+thur
+selz
+shells
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> __name__  # '__main__'  or 'regular_class'
+'__main__'
+>>> __doc__ is None
+True
+>>> 
+>>> 
+>>> ================================ RESTART ================================
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+>>> __name__
+'__main__'
+>>> __doc__ is None
+True
+>>> x = 10
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'x']
+>>> x
+10
+>>> y
+
+Traceback (most recent call last):
+  File "<pyshell#803>", line 1, in <module>
+    y
+NameError: name 'y' is not defined
+>>> 
+>>> import math
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'math', 'x']
+>>> x
+10
+>>> math
+<module 'math' from '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/math.so'>
+>>> def square(x):
+	return x*x
+
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'math', 'square', 'x']
+>>> x
+10
+>>> math
+<module 'math' from '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/math.so'>
+>>> square
+<function square at 0x1017652a8>
+>>> class Dog:
+	pass
+
+>>> dir()
+['Dog', '__builtins__', '__doc__', '__name__', '__package__', 'math', 'square', 'x']
+>>> Dog
+<class __main__.Dog at 0x101763940>
+>>> ================================ RESTART ================================
+>>> 
+Fido
+Woof!
+Fido is walking
+Animal
+>>> 
+>>> 
+>>> __name__
+'__main__'
+>>> __doc__ is None
+True
+>>> Animal
+<class __main__.Animal at 0x1017634c8>
+>>> Dog
+<class __main__.Dog at 0x101763530>
+>>> 
+>>> 
+>>> Animal
+<class __main__.Animal at 0x1017634c8>
+>>> Animal.__name__
+'Animal'
+>>> Animal.__doc__
+'Demonstration of a simple Animal class'
+>>> Animal.__init__
+<unbound method Animal.__init__>
+>>> Animal.walk
+<unbound method Animal.walk>
+>>> 
+>>> Dog.__name__
+'Dog'
+>>> Dog.__doc__
+'Specialization of Animal'
+>>> Dog.bark
+<unbound method Dog.bark>
+>>> 
+>>> dir(Dog)
+['__doc__', '__init__', '__module__', 'bark', 'walk']
+>>> 
+>>> 
+>>> d
+<__main__.Dog instance at 0x1016e0d88>
+>>> d.__class__
+<class __main__.Dog at 0x101763530>
+>>> d.__dict__
+{'name': 'Fido'}
+>>> len('hello')
+5
+>>> vars(d)
+{'name': 'Fido'}
+>>> vars(Dog)
+{'__module__': '__main__', '__doc__': 'Specialization of Animal', 'bark': <function bark at 0x1016111b8>}
+>>> vars(Animal)
+{'__module__': '__main__', '__doc__': 'Demonstration of a simple Animal class', '__init__': <function __init__ at 0x1004a5f50>, 'walk': <function walk at 0x1004a5b18>}
+>>> vars(d)
+{'name': 'Fido'}
+>>> d.__dict__
+{'name': 'Fido'}
+>>> d.__class__
+<class __main__.Dog at 0x101763530>
+>>> d.bark()
+Woof!
+>>> d.__class__.__dict__['bark']
+<function bark at 0x1016111b8>
+>>> d.__class__.__dict__['bark'](d)
+Woof!
+>>> d.__class__.__bases__[0].__dict__['walk']
+<function walk at 0x1004a5b18>
+>>> d.__class__.__bases__[0].__dict__['walk'](d)
+Fido is walking
+>>> dir(d)
+['__doc__', '__init__', '__module__', 'bark', 'name', 'walk']
+>>> 
